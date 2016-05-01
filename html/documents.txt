@@ -15,7 +15,7 @@ Social Media
 Mininum Amount
 	-1500
 
-Additional fee for rush delivery(to offer)
+Additional fee for rush order(to offer)
 	
 Marketing:
 	-Taxi
@@ -31,8 +31,7 @@ For delivery boy
 Ordered items
 	-Eco bag with company logo
 	-calling card
-	
-	
+		
 Vegetables
 	-Onion/White Onion
 	-Potato
@@ -72,7 +71,6 @@ Fruits
 	-Kiwi
 	-Banana
 	-Pineapple
-	
 
 Dry
 	-Noodles
@@ -80,22 +78,10 @@ Dry
 		-Nissin Products
 		-Ramen
 		-Cup noodles
-	-Can Goods
-		-Ligo
-		-Century Tuna(Flavored)
-		-Spam
-		-Corned Beef
-		-Corned Tuna
-		-Hokeido
-		-Meatloaf
-		-Reno
-		-Purefoods products(can)
-		-Pork and Beans
-		-Vienna Sausage
-		-555 tuna
+	-Canned Goods
+		-all kinds of local products
 	-Cereals
-		-Quaker Oats
-		-Cereal meal
-			-Kellog products
-			-Koko crunch
+
+Dairy Foods
+	-Egg
 	-

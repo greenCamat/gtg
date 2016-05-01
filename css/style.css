@@ -171,7 +171,8 @@ body {
 
 header {
 	height: 141px;
-	background: url(../images/pastel-green-paper-texture.jpg) repeat-y;
+	/**background: url(../images/wrapper.png) repeat-x;**/
+	background-color: #8be28b;
 }
 
 .header-navigation {
@@ -193,11 +194,12 @@ header {
 }
 
 .logo {
-	background: url(../images/sampleLogo.png) no-repeat; 
-	height: 80px;
-	width: 369px;
+	background: url(../images/logo/logosmall2.png) no-repeat; 
+	height: 143px;
+	width: 210px;
 	float: left;
-	margin-left: 184px;
+	margin-left: 174px;
+	margin-top: -6px;
 }
 
 .header-navigation .btn-red {
@@ -289,7 +291,7 @@ footer div {
 	max-width: 100%;
 	/**overflow: hidden;
 	margin: -30px;**/
-	background: url(../images/wrapper.png) repeat-x scroll 0 0;
+	background: url(../images/pastel-green-paper-texture.jpg) repeat-y scroll 0 0;
 }
 
 .welcome-wrap {
@@ -329,7 +331,7 @@ footer div {
 }
 
 .main-wrap-shop-content {
-	border-bottom: 16px solid #fff;
+	/**border-bottom: 16px solid #fff;**/
 	margin-bottom: 25px;
 	padding-left: 331px;
 	
@@ -632,7 +634,7 @@ footer div {
 .upper-content {
 	width: 1016px;
 	float: right;
-	padding: 1px 296px 13px;
+	padding: 6px 296px 13px;
 	
 }
 

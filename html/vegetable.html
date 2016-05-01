@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="../css/mq.css">
 <link rel="stylesheet" type="text/css" href="../bootstrap/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="../slick/slick-theme.css"/>
+
+
 <script type="text/javascript" src="../js/jquery.min.js"></script>
 <script type="text/javascript" src="../js/modernizr.min.js"></script>
 <script type="text/javascript" src="../js/jquery-1.11.0.min.js"></script>
@@ -57,6 +59,19 @@
     </header>
     <div role="main" class="page-body" id="page-schedules">
         <div class="main-wrap-shop">
+        	<div class="title-page-veges">
+				<span>
+					Items: <select style="width: 200px;font-size: 15px;border-radius: 3px;font-weight: bold;">
+								<option>Vegetables</option>
+								<option>Fruits</option>
+								<option>Meat/Fish</option>
+								<option>Canned Goods/Instant Food</option>
+								<option>Dairy</option>
+								<option>Condiments</option>
+								<option>Rice</option>
+							</select>
+				</span>
+			</div>
 			<div class="upper-content">
 				<div class="primary-site-nav-amount-rvw-prchsd">
 					<span class="rvw-prchsd"><a href="#rvw-list" name="modal" title="Review List">Review Purchased</a></span>
@@ -67,7 +82,6 @@
 			</div>
         </div>
 		<div class="main-wrap-shop-content">
-			
 				<div class="veges-item">
 					<div class="veges-item-img">
 						<img src="../images/veges/Onion-PNG.png" alt="Onion" style="height:130;width:200px;" />
@@ -177,6 +191,7 @@
 	<div>Copyright GTG - Groceries TO-GO | 2016</div>
 </footer><div id="overlay"></div>
 <div id="modal-wrap"> <!-- put all modal elements here -->    
+	<div class="modal-wrap">
 	<div class="modal" id="rvw-list">
 			<div class="modal-header">
 				<h3>Grocery List</h3>
@@ -235,42 +250,9 @@
 				<a href="javascript:void(0)" class="btn btn-close">Shop more</a>
 			</div>
 	</div>
+	</div>
 </div>
 <script src="../js/plugins.js"></script> 
 <script src="../js/script.js"></script>
-<script type="text/javascript">
-    checked=false;
-	function checkedAll (sdList) {
-		var aa= document.getElementById('sdList');
-		 if (checked == false)
-			  {
-			   checked = true
-			  }
-			else
-			  {
-			  checked = false
-			  }
-		for (var i =0; i < aa.elements.length; i++) 
-		{
-		 aa.elements[i].checked = checked;
-	    }
-    };
-	
-	function checkedAll2 (ssList) {
-		var aa= document.getElementById('ssList');
-		 if (checked == false)
-			  {
-			   checked = true
-			  }
-			else
-			  {
-			  checked = false
-			  }
-		for (var i =0; i < aa.elements.length; i++) 
-		{
-		 aa.elements[i].checked = checked;
-	    }
-    };
-</script>
 </body>
 </html>
