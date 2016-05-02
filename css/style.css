@@ -172,14 +172,14 @@ body {
 header {
 	height: 141px;
 	/**background: url(../images/wrapper.png) repeat-x;**/
-	background-color: #8be28b;
+	background-color: #ca2e34;
 }
 
 .header-navigation {
 	/**background-color: #FFF;
 	border-bottom: 1px solid #dcdcdc;**/
 	/**width: 980px;**/
-	height: 53px;
+	height: 122px;
 	margin: 0 auto;
 	padding-left: 15px;
 }
@@ -194,12 +194,13 @@ header {
 }
 
 .logo {
-	background: url(../images/logo/logosmall2.png) no-repeat; 
-	height: 143px;
+	background: url(../images/logo/logoBigWhite.png) no-repeat; 
+	height: 169px;
 	width: 210px;
 	float: left;
 	margin-left: 174px;
-	margin-top: -6px;
+	margin-top: -25px;
+	background-size: 200px 200px;
 }
 
 .header-navigation .btn-red {
@@ -291,7 +292,7 @@ footer div {
 	max-width: 100%;
 	/**overflow: hidden;
 	margin: -30px;**/
-	background: url(../images/pastel-green-paper-texture.jpg) repeat-y scroll 0 0;
+	background-color: #ca2e34;
 }
 
 .welcome-wrap {
@@ -321,20 +322,30 @@ footer div {
 .main-wrap-shop-menu{ 
 	border-top: 16px solid #fff;   
 	margin-bottom: 100px;
-	height: 700px;
+	height: 850px;
+	/**background: url(../images/wrapper.png) repeat 0 0;**/
+	background-color: #e3ded5;
+	padding-top: 80px;
+	position: relative;
+	top: 69px;
 }
 
 .main-wrap-shop{
 	border-top: 16px solid #fff;
 	margin-bottom: 100px;
-	padding-top: 80px;
+	padding-top: 154px;
 }
 
 .main-wrap-shop-content {
-	/**border-bottom: 16px solid #fff;**/
-	margin-bottom: 25px;
-	padding-left: 331px;
-	
+	border-top: 16px solid #fff;   
+	margin-bottom: 100px;
+	height: 850px;
+	/**background: url(../images/wrapper.png) repeat 0 0;**/
+	background-color: #e3ded5;
+	padding-top: 120px;
+	padding-left: 321px;
+	position: relative;
+	top: 69px;
 }
 
 .veges-item{
@@ -634,8 +645,10 @@ footer div {
 .upper-content {
 	width: 1016px;
 	float: right;
-	padding: 6px 296px 13px;
-	
+	padding-top:153px;
+	padding-left: 601px;
+	z-index: 1;
+	position: absolute;
 }
 
 /*Dashboard*/
