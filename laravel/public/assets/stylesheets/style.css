@@ -155,7 +155,7 @@ textarea {
 
 /* Primary Styles */
 /*for sticky footer*/
-html, body, .page-container { height: 100%;overflow: auto; }
+html, body, .page-container { height: 100%; }
 .page-body { padding-bottom: 50px; }
 body > .page-container {height: auto; min-height: 100%;}
 
