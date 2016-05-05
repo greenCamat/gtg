@@ -11,32 +11,41 @@
 |
 */
 
-Route::get('/', [
-	'as' => '/', 
-	'uses' => 'PagesController@getIndex'
-	]);
+Route::get('/', function()
+{
 
-Route::get('shop', [
-	'as' => 'shop', 
-	'uses' => 'PagesController@getShop'
-	]);
+	return View::make('pages.index');
+});
 
-Route::get('sale', [
-	'as' => 'sale', 
-	'uses' => 'PagesController@getSale'
-	]);
 
-Route::get('mywallet', [
-	'as' => 'mywallet', 
-	'uses' => 'PagesController@getMywallet'
-	]);
+Route::get('/shop', function(){
 
-Route::get('ourpackages', [
-	'as' => 'ourpackages', 
-	'uses' => 'PagesController@getOurpackages'
-	]);
+	return View::make('pages.shop');
+});
 
-Route::get('contact', [
-	'as' => 'contact', 
-	'uses' => 'PagesController@getShop'
-	]);
+/**Shop menu**/
+Route::get('/vegetables', function(){
+
+	return View::make('pages.vegetables');
+});
+Route::get('/fruits', function(){
+
+	return View::make('pages.fruits');
+});
+Route::get('/meat', function(){
+
+	return View::make('pages.meat');
+});
+Route::get('/goods', function(){
+
+	return View::make('pages.goods');
+});
+Route::get('/rice', function(){
+
+	return View::make('pages.rice');
+});
+Route::get('/otherservices', function(){
+
+	return View::make('pages.otherservices');
+});
+/**Shop menu**/

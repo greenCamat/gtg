@@ -18,4 +18,8 @@ class PagesController extends Controller
     public function getContact(){
         return view('pages.contact');
     }
+
+    public function getShop(){
+        return view('pages.shop');
+    }
 }
