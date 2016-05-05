@@ -19,6 +19,8 @@
         <script type="text/javascript" src="{{ asset("assets/js/jquery-1.9.1.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("assets/js/jssor.slider.mini.js") }}"></script>
         <script type="text/javascript" src="{{ asset("assets/js/jssor.slider.mini.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/js/transition.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/bootstrap/slick/slick.min.js") }}"></script>
     </head>
     <body>
        
