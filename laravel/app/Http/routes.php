@@ -26,26 +26,26 @@ Route::get('/shop', function(){
 /**Shop menu**/
 Route::get('/vegetables', function(){
 
-	return View::make('pages.vegetables');
+	return View::make('items.vegetables');
 });
 Route::get('/fruits', function(){
 
-	return View::make('pages.fruits');
+	return View::make('items.fruits');
 });
 Route::get('/meat', function(){
 
-	return View::make('pages.meat');
+	return View::make('items.meat');
 });
 Route::get('/goods', function(){
 
-	return View::make('pages.goods');
+	return View::make('items.goods');
 });
 Route::get('/rice', function(){
 
-	return View::make('pages.rice');
+	return View::make('items.rice');
 });
 Route::get('/otherservices', function(){
 
-	return View::make('pages.otherservices');
+	return View::make('items.otherservices');
 });
 /**Shop menu**/

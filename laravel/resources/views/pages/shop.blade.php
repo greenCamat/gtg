@@ -7,11 +7,11 @@
         <div class="main-wrap-shop-menu">
 
 			<div class="veges-img">
-				<a href="vegetable.html"><label class="icon1">Vegetables</label></a>
+				<a href="{{ url ('vegetables') }}"><label class="icon1">Vegetables</label></a>
 			</div>
 			
 			<div class="fruits-img">
-				<a href="#"><label class="icon1">Fruits</label></a>
+				<a href="{{ url ('fruits') }}"><label class="icon1">Fruits</label></a>
 			</div>
 			
 			<div class="fish-img">
