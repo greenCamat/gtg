@@ -155,7 +155,7 @@ textarea {
 
 /* Primary Styles */
 /*for sticky footer*/
-html, body, .page-container { height: 100%; }
+html, body, .page-container { height: 100%; width: 100%;}
 .page-body { padding-bottom: 50px; }
 body > .page-container {height: auto; min-height: 100%;}
 
@@ -293,6 +293,7 @@ footer div {
 	/**overflow: hidden;
 	margin: -30px;**/
 	background-color: #ca2e34;
+	background-size: 100% 100%;
 }
 
 .welcome-wrap {
@@ -322,8 +323,7 @@ footer div {
 .main-wrap-shop-menu{ 
 	border-top: 16px solid #fff;   
 	margin-bottom: 100px;
-	height: 850px;
-	/**background: url(../images/wrapper.png) repeat 0 0;**/
+	height: 200%;
 	background-color: #e3ded5;
 	padding-top: 80px;
 	position: relative;

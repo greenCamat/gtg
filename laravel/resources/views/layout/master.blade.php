@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>GTG - My Profile</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=1080">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link rel="stylesheet" href="{{ asset("assets/stylesheets/style.css") }}">
         <link rel="stylesheet" href="{{ asset("assets/stylesheets/style2.css") }}">
