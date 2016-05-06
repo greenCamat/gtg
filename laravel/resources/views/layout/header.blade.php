@@ -10,7 +10,7 @@
 	<div class="header-menu">
 		<nav id="navigation">
 			<ul>
-				<li><a href="{{ url ('/') }}" title="My Profile">Home</a></li>
+				<li><a href="{{ url ('/') }}" title="Home">Home</a></li>
 				<li><a href="{{ url ('shop') }}" title="Shop">Shop</a></li>
 				<li><a href="#" title="Sale">Sale</a></li>
 				<li><a href="#" title="My Wallet">My Wallet</a></li>

@@ -4,7 +4,14 @@
    <header> @include('layout.header') </header>
     <div role="main" class="page-body">
 		<div class="main-content">
-	
+			<div style="width: 75%; margin-left: 27px;">
+				<div class="slider2">
+					  <div class="slide"><img src="/images/window1.jpg" title="window1"></div>
+					  <div class="slide"><img src="/images/window2.png" title="window2"></div>
+					  <div class="slide"><img src="/images/window3.jpg" title="window3"></div>
+					  <div class="slide"><img src="/images/window2.png" title="window4"></div>
+				</div>
+			</div>
 		</div>
 
 		<div class="lower-content">
@@ -53,3 +60,4 @@
 <footer> @include('layout.footer') </footer>
 </body>
 </html>
+

@@ -10,20 +10,19 @@
 
         <link rel="stylesheet" href="{{ asset("assets/stylesheets/style.css") }}">
         <link rel="stylesheet" href="{{ asset("assets/stylesheets/style2.css") }}">
-        <link rel="stylesheet" href="{{ asset("assets/stylesheets/mq.css") }}">
-        <link rel="stylesheet" href="{{ asset("assets/stylesheets/transition.css") }}">
         <link rel="stylesheet" href="{{ asset("assets/stylesheets/jquery.bxslider.css") }}">
-        
+      
         <script type="text/javascript" src="{{ asset("assets/js/jquery.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("assets/js/jquery.bxslider.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("assets/js/modernizr.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("assets/js/jquery-1.11.0.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("assets/js/jquery-migrate-1.2.1.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/js/jquery-1.11.3.min.js") }}"></script>
         <script type="text/javascript" src="{{ asset("assets/js/jquery-1.9.1.min.js") }}"></script>
-        <script type="text/javascript" src="{{ asset("assets/js/jssor.slider.mini.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/js/bootstrap.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/js/jquery.bxslider.min.js") }}"></script>
+        <script type="text/javascript" src="{{ asset("assets/js/modernizr.min.js") }}"></script>        
+        
     </head>
     <body>
        
+        <script type="text/javascript" src="{{ asset("assets/js/scripts/assets.js") }}"></script>
         <div class="container">
         </div>
     </body>
