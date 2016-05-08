@@ -13,10 +13,12 @@
 				<li><a href="{{ url ('/') }}" title="Home">Home</a></li>
 				<li><a href="{{ url ('shop') }}" title="Shop">Shop</a></li>
 				<li><a href="#" title="Sale">Sale</a></li>
-				<li><a href="#" title="My Wallet">My Wallet</a></li>
 				<li><a href="#" title="Packages">Our Packages</a></li>
+				<li><a href="#" title="Contact Us">About Us</a></li>
 				<li><a href="#" title="Contact Us">Contact Us</a></li>
-				<!--<li><a href="login.html" title="Logout">Logout</a></li>-->
+				<!--
+				<li><a href="#" title="My Wallet">My Wallet</a></li>
+				<li><a href="login.html" title="Logout">Logout</a></li>-->
 			</ul>
 		</nav>
 	</div>

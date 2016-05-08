@@ -64,6 +64,7 @@
 	text-decoration: none;
 	border-radius: 3px;
 	width: 144px;
+	font-weight: bold;
 }
 
 .icon1:hover{
@@ -175,12 +176,6 @@
 }
 
 .title-page-veges{
-	position: absolute;
-	padding: 147px 242px;
-	z-index: 1;
-}
-
-.title-page-veges span{
 	font-size: 21px;
 	font-weight: bold;
 	color: #cf000f;
@@ -197,7 +192,7 @@
 /**lower content**/
 
 .lower-content{
-	
+	height: 100%;
 	border-top: 16px solid #fff;
 	background: url(/images/wrapper.png) repeat-x scroll 0 0; 
 }
