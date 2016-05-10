@@ -3,9 +3,8 @@
 
 <div class="page-container"> 
 	@section('content')
- 
 		<div class="main-content">
-			<div style="width: 75%; margin-left: 27px;">
+			<div>
 				<div class="slider2">
 					  <div class="slide"><img src="/images/window1.jpg" title="window1"></div>
 					  <div class="slide"><img src="/images/window2.png" title="window2"></div>
@@ -53,9 +52,6 @@
 			    </div>
 			</div>
 		</div>
-
-
-
 </div>
 @endsection
 
