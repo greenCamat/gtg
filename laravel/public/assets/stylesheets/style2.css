@@ -1,99 +1,78 @@
-.veges-img{
-	background: url(/images/icon/red-bg.png) no-repeat;
-	background-size: 219px 192px;
+/**Items Menu Icons**/
+
+.upper-div{
+	width:100%;
+  	clear:both;
+  	margin:135px 278px;
+}
+.lower-div{
+	width:100%;
+  	clear:both;
+  	margin:135px 278px;
+}
+.left{
+	
+	float:left; width:33%;
 	height: 222px;
 	width:250px;
-	margin: 98px 177px;
-	float:left;
 }
 
-/**.veges-img:hover{
-	background: url(/images/icon/vegies-green.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: 98px 177px;
-	float:left;
-}**/
-
-.fruits-img{
-	background: url(/images/icon/fruits1.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: 98px -32px;
-	float:left;
+.upper-div > div {
+  margin:10px;
 }
 
-.fish-img{
-	background: url(/images/icon/meatfish.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: 98px 130px;
-	float:right;
+.lower-div > div {
+  margin:10px;
+  background-color:#bada55;
 }
 
-.can-img{
-	background: url(/images/icon/canned-food1.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: -7px 178px;
-	float:left;
+
+
+a.darken {
+    display: inline-block;
+    padding: 0;
+    position: relative;
 }
 
-.rice-img{
-	background: url(/images/icon/rice.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: -7px -25px;
-	float:left;
+a.darken img {
+    display: block;
+    -webkit-transition: all 0.5s linear;
+       -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+         -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
 }
 
-.others-img{
-	background: url(/images/icon/others.png) no-repeat;
-	background-size: 219px 192px;
-	height: 222px;
-	width:250px;
-	margin: -7px 124px;
-	float:right;
+a.darken:hover img {
+    opacity: 0.7;
+    border:1px solid;
+            
 }
 
-.icon1{
-	background-color:#F7CA18 ;
-	position: absolute;
-	margin-top: 207px;
-	margin-left: 34px;
-	color: #FFF;
-	text-transform: uppercase;
-	text-align: center;
-	display: inline-block;
-	text-decoration: none;
-	border-radius: 3px;
-	width: 144px;
-	font-weight: bold;
+a.darken span
+{
+    position: absolute;
+    top: 111px;
+    left: 82px;
+    color: rgba(255, 255, 255, 0);
+     -webkit-transition: all 0.5s linear;
+       -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+         -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
 }
 
-.icon1:hover{
-	background-color:#61BD6D ;
-	position: absolute;
-	margin-top: 207px;
-	margin-left: 34px;
-	color: #FFF;
-	text-transform: uppercase;
-	text-align: center;
-	display: inline-block; 
-	text-decoration: none;
-	border-radius: 3px;
-	width: 144px;
-	font-size:16px;
+a.darken:hover span
+{
+    color: rgba(255, 255, 255, 1);
+     -webkit-transition: all 0.5s linear;
+       -moz-transition: all 0.5s linear;
+        -ms-transition: all 0.5s linear;
+         -o-transition: all 0.5s linear;
+            transition: all 0.5s linear;
 }
 
-.categories{
-	background: url(/images/icon/otherservicesicon.png) no-repeat;
-}
+/**Items Menu Icons**/
 
 
 /**Modal**/
@@ -242,6 +221,7 @@
 
 }
 /**end**/
+
 
 #navigation { background: url(/images/navigation.png) no-repeat; width: 1000px; height: 95px; padding-top: 9px; padding-left: 130px; z-index: 100;background-size: 1000px 95px;}
 #navigation ul { list-style: none; list-style-position: outside; }
