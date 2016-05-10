@@ -8,7 +8,7 @@
         <div class="main-wrap-shop-menu">
 
 			<div class="veges-img">
-				<a href="{{ url ('vegetables') }}"><label class="icon1">Vegetables</label></a>
+				<a href="{{ url ('vegetables') }}"></a>
 			</div>
 			
 			<div class="fruits-img">
@@ -32,7 +32,6 @@
 			</div>            
         </div>
   </div>
-</div>
 @endsection
 
 @section('scripts')

@@ -22,7 +22,6 @@
 			</ul>
 		</nav>
 	</div>
-	<div class="division"></div>
 	<div class="header-right">
 		<div class="socials">
 			<a href="#" class="facebook-ico">facebook</a>

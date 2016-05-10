@@ -156,7 +156,7 @@ textarea {
 /* Primary Styles */
 /*for sticky footer*/
 html, body, .page-container { height: 100%; width: 100%;}
-.page-body { padding-bottom: 50px; }
+/**.page-body { padding-bottom: 50px; }**/
 body > .page-container {height: auto; min-height: 100%;}
 
 
@@ -169,10 +169,10 @@ body {
 	
 }
 
-header {
+.page-header {
 	height: 141px;
 	/**background: url(../images/wrapper.png) repeat-x;**/
-	background-color: #ca2e34;
+	background-color: #e3444a;
 }
 
 .header-navigation {
@@ -269,7 +269,7 @@ footer {
 	font-size: 12px;
 	height: 50px;
 	position: relative;
-	margin-top: -50px;
+	/**margin-top: 35.8%;**/
 }
 
 footer.n53 {
@@ -291,7 +291,7 @@ footer div {
 	max-width: 100%;
 	/**overflow: hidden;
 	margin: -30px;**/
-	background-color: #ca2e34;
+	background-color: #e3444a;
 	background-size: 100% 100%;
 }
 
@@ -321,12 +321,13 @@ footer div {
 
 .main-wrap-shop-menu{ 
 	border-top: 16px solid #fff;   
-	margin-bottom: 100px;
-	height: 200%;
-	background-color: #e3ded5;
+	margin-bottom: 50%;
+	height: 50%;
+	background-color: #f5f5f5;
+	/**background: url(/images/wrapper.png) repeat-x scroll 0 0; **/
 	padding-top: 80px;
 	position: relative;
-	top: 53px;
+	top: 52px;
 }
 
 .main-wrap-shop{

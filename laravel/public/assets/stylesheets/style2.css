@@ -144,7 +144,7 @@
 	margin-bottom: 100px;
 	/**height: 500px;
 	border-top: 16px solid #fff;**/
-	left:145px;
+	left:146px;
 	position: relative;
 	top: 66px;
 	padding-top: 80px;
@@ -192,7 +192,7 @@
 /**lower content**/
 
 .lower-content{
-	height: 100%;
+	/**height: 100%;**/
 	border-top: 16px solid #fff;
 	background: url(/images/wrapper.png) repeat-x scroll 0 0; 
 }
