@@ -1,7 +1,7 @@
 @extends('layout.master')
-
+@section('title', 'GTG - My Profile')
+@section('content')
 <div class="page-container"> 
-   <header> @include('layout.header') </header>
     <div role="main" class="page-body">
 		<div class="main-content">
 			<div style="width: 75%; margin-left: 27px;">
@@ -56,8 +56,5 @@
   </div>
 
 </div>
-<!-- /.page-container -->
-<footer> @include('layout.footer') </footer>
-</body>
-</html>
+@endsection
 

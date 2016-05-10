@@ -1,5 +1,6 @@
 @extends('layout.master')
-<header> @include('layout.header') </header>
+@section('title', 'GTG - Shop')
+@section('content')
 <div role="main" class="page-body">
 	    <div class="title-page">
 			<span>Items</span>
@@ -32,4 +33,10 @@
         </div>
   </div>
 </div>
-<footer> @include('layout.footer') </footer>
+@endsection
+
+@section('scripts')
+
+<!--add here the js for this page-->
+
+@endsection

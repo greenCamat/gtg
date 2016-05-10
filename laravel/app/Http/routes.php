@@ -26,8 +26,12 @@ Route::get('/shop', function(){
 /**Shop menu**/
 Route::get('/vegetables', function(){
 
-	return View::make('items.vegetables');
+	//return View::make('items.vegetables');
+	return View::make('items.vegies');
 });
+
+Route::get('vegies-info', 'VegiesController@index');
+
 Route::get('/fruits', function(){
 
 	return View::make('items.fruits');
