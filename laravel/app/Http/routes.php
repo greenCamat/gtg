@@ -23,7 +23,7 @@ Route::get('/shop', function(){
 	return View::make('pages.shop');
 });
 
-/**Shop menu**/
+/**Items menu**/
 Route::get('/vegetables', function(){
 
 	return View::make('items.vegetables');
@@ -32,13 +32,13 @@ Route::get('/fruits', function(){
 
 	return View::make('items.fruits');
 });
-Route::get('/meat', function(){
+Route::get('/meat-fish', function(){
 
-	return View::make('items.meat');
+	return View::make('items.meat-fish');
 });
-Route::get('/goods', function(){
+Route::get('/canned-instant-goods', function(){
 
-	return View::make('items.goods');
+	return View::make('items.canned-instant-goods');
 });
 Route::get('/rice', function(){
 
@@ -48,4 +48,4 @@ Route::get('/otherservices', function(){
 
 	return View::make('items.otherservices');
 });
-/**Shop menu**/
+/**Items menu**/

@@ -15,15 +15,15 @@
 			</div>
 			
 			<div class="fish-img">
-				<a href="#"><label class="icon1">Meat/Fish</label></a>
+				<a href="{{ url ('meat-fish') }}"><label class="icon1">Meat/Fish</label></a>
 			</div>
 			
 			<div class="can-img">
-				<a href="#"><label class="icon1">Canned Goods / Instant Food</label></a>
+				<a href="{{ url ('canned-instant-goods') }}"><label class="icon1">Canned Goods / Instant Food</label></a>
 			</div>
 			
 			<div class="rice-img">
-				<a href="#"><label class="icon1">Rice</label></a>
+				<a href="{{ url ('rice') }}"><label class="icon1">Rice</label></a>
 			</div>
 			
 			<div class="others-img">
