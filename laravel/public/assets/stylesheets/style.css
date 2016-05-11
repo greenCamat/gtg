@@ -156,29 +156,26 @@ textarea {
 /* Primary Styles */
 /*for sticky footer*/
 html, body, .page-container { height: 100%; width: 100%;}
-/**.page-body { padding-bottom: 50px; }**/
+.page-body { padding-bottom: 50px; }
 body > .page-container {height: auto; min-height: 100%;background: #e3444a;}
 
 
 body {
-	background-color: #e3444a;
+	background: #e3444a;
 	color: #939393;
 	font-family: 'Trebuchet MS',Tahoma,Arial,Helvetica,sans-serif;
 /*	font-family: 'OpenSansRegular',Tahoma,Arial,Helvetica,sans-serif; */
 	font-size: 14px;
-	
+	overflow: scroll;
+	margin-top: auto;
 }
 
 .page-header {
 	height: 141px;
-	/**background: url(../images/wrapper.png) repeat-x;**/
 	background-color: #e3444a;
 }
 
 .header-navigation {
-	/**background-color: #FFF;
-	border-bottom: 1px solid #dcdcdc;**/
-	/**width: 980px;**/
 	height: 122px;
 	margin: 0 auto;
 	padding-left: 15px;
@@ -287,13 +284,11 @@ footer div {
 	padding-top: 14px;
 }
 
-.page-body {
-	max-width: 100%;
-	/**overflow: hidden;
-	margin: -30px;**/
+/**.page-body {
+	
 	background-color: #e3444a;
 	background-size: 100% 100%;
-}
+}**/
 
 .welcome-wrap {
 	padding: 15px 0 15px 0;

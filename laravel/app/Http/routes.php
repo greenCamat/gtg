@@ -23,6 +23,12 @@ Route::get('/shop', function(){
 	return View::make('pages.shop');
 });
 
+Route::get('/contactus', function(){
+
+	return View::make('pages.contactus');
+});
+
+
 /**Items menu**/
 Route::get('/vegetables', function(){
 
@@ -53,3 +59,10 @@ Route::get('/otherservices', function(){
 	return View::make('items.otherservices');
 });
 /**Items menu**/
+
+
+
+Route::get('/admin', function(){
+
+	return View::make('pages.admin');
+});

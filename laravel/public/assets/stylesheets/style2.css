@@ -134,21 +134,15 @@ a.darken:hover span
 }
 
 .main-content{
-	
 	float: left;
-   	margin: -48px 147px;
+   	margin: 66px 147px;
    	width: 100%;
   	height: 100%;
    	background: url(/images/slider.png) no-repeat scroll 0 0;
    	padding-top: 80px;
-	/**margin-bottom: 100px;
-	left:146px;
-	position: relative;
-	top: 66px;
-	padding-top: 80px;
-	background: url(/images/slider.png) no-repeat scroll 0 0;
-	height: 100%;
-	width: 100%;**/
+   	clear:both;
+   	overflow:hidden;
+   	position: absolute;
 }
 
 .submit-main-content{
