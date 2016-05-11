@@ -6,6 +6,7 @@ var Vegies = function ()
     
     self.init = function()
     {
+        console.log("in here!!!");
         // if (!self._request || !self._request.isRunning())
         // {
             // self._request = new Request.JSON(
