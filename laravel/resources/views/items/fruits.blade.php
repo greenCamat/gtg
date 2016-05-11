@@ -1,5 +1,6 @@
 @extends('layout.master')
-<header> @include('layout.header') </header>
+@section('title', 'GTG - Shop')
+@section('content')	
 <div role="main" class="page-body">
 		<div class="upper-content">
 			
@@ -126,5 +127,4 @@
 				</div>
 		</div>
   </div>
-  
-  <footer> @include('layout.footer') </footer>
+@endsection
