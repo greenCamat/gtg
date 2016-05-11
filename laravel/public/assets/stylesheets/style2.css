@@ -1,14 +1,13 @@
 /**Items Menu Icons**/
-
 .upper-div{
 	width:100%;
   	clear:both;
-  	margin:135px 278px;
+  	margin:135px 175px;
 }
 .lower-div{
 	width:100%;
   	clear:both;
-  	margin:135px 278px;
+  	margin:135px 175px;
 }
 .left{
 	
@@ -18,12 +17,11 @@
 }
 
 .upper-div > div {
-  margin:10px;
+  margin:40px;
 }
 
 .lower-div > div {
-  margin:10px;
-  background-color:#bada55;
+  margin:40px;
 }
 
 
@@ -45,15 +43,16 @@ a.darken img {
 
 a.darken:hover img {
     opacity: 0.7;
-    border:1px solid;
-            
+    border:4px solid;            
 }
 
 a.darken span
 {
     position: absolute;
     top: 111px;
-    left: 82px;
+    left: 6px;
+    width: 240px;
+    text-align: center;
     color: rgba(255, 255, 255, 0);
      -webkit-transition: all 0.5s linear;
        -moz-transition: all 0.5s linear;
@@ -63,8 +62,14 @@ a.darken span
 }
 
 a.darken:hover span
-{
+{	
+	font-size: 20px;
+    border-radius: 9px;
+    color: #fff;
+    background-color: #61BD6D;
     color: rgba(255, 255, 255, 1);
+    width: 240px;
+    text-align: center;
      -webkit-transition: all 0.5s linear;
        -moz-transition: all 0.5s linear;
         -ms-transition: all 0.5s linear;

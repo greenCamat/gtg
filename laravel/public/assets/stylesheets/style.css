@@ -267,9 +267,8 @@ body {
 
 footer {
 	font-size: 12px;
-	height: 50px;
 	position: absolute;
-	margin: 641px 0px;
+	margin: 641px auto;
 	width: 100%;
 }
 
