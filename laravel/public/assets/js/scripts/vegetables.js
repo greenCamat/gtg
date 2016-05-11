@@ -6,7 +6,11 @@ var Vegies = function ()
     
     self.init = function()
     {
-        console.log("in here!!!");
+        $$("#item-category").removeEvents();
+        $$("#item-category").addEvent('change', function() {
+            console.log("the value: ", this.get("value"));
+            console.log("the selected and value: ", this.getSelected().get("value"));
+        });
         // if (!self._request || !self._request.isRunning())
         // {
             // self._request = new Request.JSON(

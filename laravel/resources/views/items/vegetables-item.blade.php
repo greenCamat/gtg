@@ -10,17 +10,10 @@
         </div>
 
         <span class="title-page-veges">Items:</span> 
-        <select style="width: 200px;font-size: 15px;border-radius: 3px;font-weight: bold;">
-        @foreach($enum as $val)
-            <option>{{$val}}</option>
-        @endforeach
-            <!--option>Vegetables</option>
-            <option>Fruits</option>
-            <option>Meat/Fish</option>
-            <option>Canned Goods/Instant Food</option>
-            <option>Dairy</option>
-            <option>Condiments</option>
-            <option>Rice</option-->
+        <select id="item-category" style="width: 200px;font-size: 15px;border-radius: 3px;font-weight: bold;">
+            @foreach($data['category'] as $val)
+                <option>{{$val}}</option>
+            @endforeach
         </select>
 
         <div class="primary-site-nav-amount">
@@ -28,6 +21,9 @@
         </div>
     </div>
     
+    <div class="main-wrap-shop-content">
+    {{$data['item_name']}}
+    </div>
     
 
 </div>

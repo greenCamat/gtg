@@ -16,7 +16,7 @@ class VegetablesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {   
         $food_category = DB::select( DB::raw("SHOW COLUMNS FROM food_category_tb WHERE Field = 'category'") )[0]->Type;
         preg_match('/^enum\((.*)\)$/', $food_category, $matches);
         $enum = array();
@@ -26,7 +26,17 @@ class VegetablesController extends Controller
             $enum = array_add($enum, $v, $v);
         }
         
-        return View::make('items.vegetables-item', compact('enum'));
+        $foods = DB::select('select * from food_category_tb where status_flag = 1');
+        $foods = $foods[0];
+        //print_r($foods[0]);
+        $data = [
+            "item_name" => $foods->name,
+            "item_desc" => $foods->description,
+            "item_price" => $foods->price,
+            "category" => $enum
+        ];
+        
+        return View::make('items.vegetables-item', compact('data'));
         //return response()->json(array('enum'=> $enum), 200);
         // try {
             // $food_category = DB::select('select * from food_category_tb where status_flag = 1');
