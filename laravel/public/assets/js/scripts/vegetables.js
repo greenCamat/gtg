@@ -6,23 +6,23 @@ var Vegies = function ()
     
     self.init = function()
     {
-        if (!self._request || !self._request.isRunning())
-        {
-            self._request = new Request.JSON(
-            {
-                'url' : './vegies-info',
-                'method' : 'GET',
-                'data' : '',
-                'onSuccess' : function(data)
-                {
-                   console.log("success! ", data);
-                },
-                'onError' : function()
-                {
-                    self._request.stop;
-                }
-            }).send();
-        }
+        // if (!self._request || !self._request.isRunning())
+        // {
+            // self._request = new Request.JSON(
+            // {
+                // 'url' : './vegetables-item',
+                // 'method' : 'GET',
+                // 'data' : '',
+                // 'onSuccess' : function(data)
+                // {
+                   // console.log("success! ", data);
+                // },
+                // 'onError' : function()
+                // {
+                    // self._request.stop;
+                // }
+            // }).send();
+        // }
     };
 };
 

@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-
+use View;
+use DB;
+use Session;
 class VegetablesController extends Controller
 {
     /**
@@ -15,7 +17,31 @@ class VegetablesController extends Controller
      */
     public function index()
     {
-        //
+        $food_category = DB::select( DB::raw("SHOW COLUMNS FROM food_category_tb WHERE Field = 'category'") )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $food_category, $matches);
+        $enum = array();
+        foreach( explode(',', $matches[1]) as $value )
+        {
+            $v = trim( $value, "'" );
+            $enum = array_add($enum, $v, $v);
+        }
+        
+        return View::make('items.vegetables-item', compact('enum'));
+        //return response()->json(array('enum'=> $enum), 200);
+        // try {
+            // $food_category = DB::select('select * from food_category_tb where status_flag = 1');
+            // $data = array();
+            // foreach($food_category as $food)
+            // {
+                // $data = {
+                    // 'category'
+                // };
+            // };
+        // }
+        // catch (PDOException $exception) {
+            // Log:error( $exception->getMessage() );
+        // }
+        // return response()->json(array('db'=> $conn), 200);
     }
 
     /**
@@ -25,7 +51,7 @@ class VegetablesController extends Controller
      */
     public function create()
     {
-        //
+        return "dito ba yan? RESTful create?!";
     }
 
     /**

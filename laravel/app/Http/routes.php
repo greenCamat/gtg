@@ -13,7 +13,6 @@
 
 Route::get('/', function()
 {
-
 	return View::make('pages.index');
 });
 
@@ -30,13 +29,12 @@ Route::get('/contactus', function(){
 
 
 /**Items menu**/
-Route::get('/vegetables', function(){
+// Route::get('/vegetables', function()
+// {
+	// // return View::make('items.vegetables-item');
+// }]);
+Route::resource('vegetables', 'VegetablesController');
 
-	//return View::make('items.vegetables');
-	return View::make('items.vegies');
-});
-
-Route::get('vegies-info', 'VegiesController@index');
 
 Route::get('/fruits', function(){
 
