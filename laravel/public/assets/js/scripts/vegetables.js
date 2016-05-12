@@ -11,33 +11,37 @@ var Vegies = function ()
     self.init = function()
     {
         $$(self.itemCategoryId).removeEvents();
-        $$(self.itemCategoryId).addEvent('change', function() {
+        $$(self.itemCategoryId).addEvent('change', function()
+        {
             console.log("the value: ", this.get("value"));
             console.log("the selected and value: ", this.getSelected().get("value"));
         });
         
         $$(self.addButtonId).removeEvents();
-        $$(self.addButtonId).addEvent('click', function() {
-            console.log("check!");
+        $$(self.addButtonId).addEvent('click', function()
+        {
+            var subTotal = $(self.showTotalAmtId).text().toInt();
+            
+            console.log(subTotal);
         });
         
-        // if (!self._request || !self._request.isRunning())
-        // {
-            // self._request = new Request.JSON(
-            // {
-                // 'url' : './vegetables-item',
-                // 'method' : 'GET',
-                // 'data' : '',
-                // 'onSuccess' : function(data)
-                // {
-                   // console.log("success! ", data);
-                // },
-                // 'onError' : function()
-                // {
-                    // self._request.stop;
-                // }
-            // }).send();
-        // }
+        if (!self._request || !self._request.isRunning())
+        {
+            self._request = new Request.JSON(
+            {
+                'url' : './vegetables/create',
+                'method' : 'GET',
+                'data' : '',
+                'onSuccess' : function(data)
+                {
+                   console.log("success! ", data);
+                },
+                'onError' : function()
+                {
+                    self._request.stop;
+                }
+            }).send();
+        }
     };
 };
 
@@ -54,7 +58,7 @@ var Vegetables =
     }
 };
 
-window.addEvent('domready', function(){
+window.addEvent('domready', function(){    
   // do stuff when the document has loaded but images have not
   Vegetables.init();
 });

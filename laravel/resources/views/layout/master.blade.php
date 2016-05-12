@@ -18,9 +18,10 @@
         <script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/jquery.bxslider.min.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/modernizr.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('assets/js/scripts/assets.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/MooTools-More-1.6.0-compressed.js') }}"></script>
         <script type="text/javascript" src="{{ asset('assets/js/MooTools-Core-1.6.0.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('assets/js/scripts/assets.js') }}"></script>
+        
     </head>
     <body>
         <!--the main header-->

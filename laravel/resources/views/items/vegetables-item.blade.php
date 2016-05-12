@@ -17,7 +17,7 @@
         </select>
 
         <div class="primary-site-nav-amount">
-            <span id="total-amt" class="total-amt"></span><!--TOTAL AMOUNT: &#x20B1;3,200.00</span-->
+            Total Amount: &#x20B1; <span id="total-amt" class="total-amt">0.00</span><!--TOTAL AMOUNT: &#x20B1;3,200.00</span-->
         </div>
     </div>
     

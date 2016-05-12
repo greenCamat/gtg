@@ -29,12 +29,7 @@ Route::get('/contactus', function(){
 
 
 /**Items menu**/
-// Route::get('/vegetables', function()
-// {
-	// // return View::make('items.vegetables-item');
-// }]);
 Route::resource('vegetables', 'VegetablesController');
-
 
 Route::get('/fruits', function(){
 
