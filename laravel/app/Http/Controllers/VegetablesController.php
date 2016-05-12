@@ -25,18 +25,26 @@ class VegetablesController extends Controller
             $v = trim( $value, "'" );
             $enum = array_add($enum, $v, $v);
         }
+        $foodColumn = $enum;
         
-        $foods = DB::select('select * from food_category_tb where status_flag = 1');
-        $foods = $foods[0];
-        //print_r($foods[0]);
-        $data = [
-            "item_name" => $foods->name,
-            "item_desc" => $foods->description,
-            "item_price" => $foods->price,
-            "category" => $enum
-        ];
-        
-        return View::make('items.vegetables-item', compact('data'));
+        $foodData = DB::select('select id, category, name, description, price from food_category_tb where status_flag = 1');
+        $temp = array();
+        if(count($foodData[0]) && is_array($foodData))
+        {
+            foreach($foodData as $val)
+            {
+                $temp[] = array(
+                    'food_id'   => $val->id,
+                    'food_name' => $val->name,
+                    'food_desc' => $val->description,
+                    'food_price' => $val->price
+                );
+            }
+            
+            $foodData = $temp;
+        }
+        //print_r($foodData);
+        return View::make('items.vegetables-item', compact('foodData', 'foodColumn'));
         //return response()->json(array('enum'=> $enum), 200);
         // try {
             // $food_category = DB::select('select * from food_category_tb where status_flag = 1');

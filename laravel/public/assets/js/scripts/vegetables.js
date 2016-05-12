@@ -3,14 +3,24 @@ var Vegies = function ()
     var self = this;
     
     self._request = null;
+    self.itemCategoryId = '#item-category';
+    self.addButtonId = '#btn-add-item';
+    self.minusButtonId = '#btn-minus-item';
+    self.showTotalAmtId = '#total-amt';
     
     self.init = function()
     {
-        $$("#item-category").removeEvents();
-        $$("#item-category").addEvent('change', function() {
+        $$(self.itemCategoryId).removeEvents();
+        $$(self.itemCategoryId).addEvent('change', function() {
             console.log("the value: ", this.get("value"));
             console.log("the selected and value: ", this.getSelected().get("value"));
         });
+        
+        $$(self.addButtonId).removeEvents();
+        $$(self.addButtonId).addEvent('click', function() {
+            console.log("check!");
+        });
+        
         // if (!self._request || !self._request.isRunning())
         // {
             // self._request = new Request.JSON(
