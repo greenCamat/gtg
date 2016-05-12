@@ -27,7 +27,7 @@
         @include('layout.header')
         
         <!--main container-->
-        <div class="page-body">
+        <div class="page-container">
             @yield('content')
         </div>
         

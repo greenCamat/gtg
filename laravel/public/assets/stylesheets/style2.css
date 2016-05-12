@@ -2,27 +2,28 @@
 .upper-div{
 	width:100%;
   	clear:both;
-  	margin:135px 175px;
+  	margin:135px 330px;
 }
 .lower-div{
 	width:100%;
   	clear:both;
-  	margin:135px 175px;
+  	margin:135px 330px;
 }
 .left{
 	
-	float:left; width:33%;
+	float:left;
+	width:33%;
 	height: 222px;
 	width:250px;
 }
 
-.upper-div > div {
-  margin:40px;
+/**.upper-div > div {
+  margin:10px;
 }
 
 .lower-div > div {
-  margin:40px;
-}
+  margin:10px;
+}**/
 
 
 
@@ -49,9 +50,8 @@ a.darken:hover img {
 a.darken span
 {
     position: absolute;
-    top: 111px;
-    left: 6px;
-    width: 240px;
+    top: 63px;
+    left: 5px;
     text-align: center;
     color: rgba(255, 255, 255, 0);
      -webkit-transition: all 0.5s linear;
@@ -68,7 +68,7 @@ a.darken:hover span
     color: #fff;
     background-color: #61BD6D;
     color: rgba(255, 255, 255, 1);
-    width: 240px;
+    width: 140px;
     text-align: center;
      -webkit-transition: all 0.5s linear;
        -moz-transition: all 0.5s linear;
