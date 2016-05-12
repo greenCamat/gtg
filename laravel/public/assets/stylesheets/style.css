@@ -319,7 +319,7 @@ footer div {
 	margin: 52px 0px;
 	height: 100%;
 	width: 100%;
-	background: url(/images/wrapper.png) repeat-x scroll 0 0;
+	/**background: url(/images/wrapper.png) repeat-x scroll 0 0;**/
 	padding-top: 80px;
 	position: absolute;
 	float: left;
@@ -334,28 +334,23 @@ footer div {
 .main-wrap-shop-content {
 	border-top: 16px solid #fff;   
 	margin: 0 auto;
-	height: 215%;
-	background-color: #e3ded5;
+	height: 100%;
+	/**background-color: #e3ded5;**/
 	padding: 149px 318px;
 	position: relative;
 	top: 53px;
 }
 
 .veges-item{
-	border-bottom: 2px solid #dcdcdc;
-	border-top: 2px solid #dcdcdc;
-	border-left: 2px solid #dcdcdc;
-	border-right: 2px solid #dcdcdc;
-	margin-bottom: 25px;
+	border: 2px solid #dcdcdc;
+	margin-left: 25px;
 	width: 210px;
 	height:200px;
+	float:left;
 }
 
 .veges-item2{
-	border-bottom: 2px solid #dcdcdc;
-	border-top: 2px solid #dcdcdc;
-	border-left: 2px solid #dcdcdc;
-	border-right: 2px solid #dcdcdc;
+	border: 2px solid #dcdcdc;
 	margin: -225px 261px;
 	width: 210px;
 	height:200px;
@@ -363,10 +358,7 @@ footer div {
 }
 
 .veges-item3{
-	border-bottom: 2px solid #dcdcdc;
-	border-top: 2px solid #dcdcdc;
-	border-left: 2px solid #dcdcdc;
-	border-right: 2px solid #dcdcdc;
+	border: 2px solid #dcdcdc;
 	margin: -225px 522px;
 	width: 210px;
 	height:200px;
@@ -378,6 +370,7 @@ footer div {
 	position:absolute;
 	height: 131px;
 	width: 208px;
+	background: #e7e4dc;
 }
 
 .veges-add-btn{
@@ -636,8 +629,8 @@ footer div {
 }
 
 .upper-content {
-	/**width: 1016px;**/
-	float: right;
+	/**width: 1016px;
+	float: right;**/
 	padding-top:153px;
 	padding-left: 325px;
 	z-index: 1;

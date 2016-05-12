@@ -1,5 +1,7 @@
 @extends('layout.master')
 @section('title', 'GTG - Shop')
-@section('content')	
+@section('content')
+<div class="main-wrap-shop-menu">
+</div>
 
 @endsection
