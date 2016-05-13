@@ -30,6 +30,7 @@ Route::get('/contactus', function(){
 
 /**Items menu**/
 Route::resource('vegetables', 'VegetablesController');
+Route::resource('getfood', 'VegetablesController@getFood');
 
 Route::get('/fruits', function(){
 
