@@ -14,7 +14,7 @@
 				<li><a href="{{ url ('shop') }}" title="Shop">Shop</a></li>
 				<li><a href="#" title="Sale">Sale</a></li>
 				<li><a href="#" title="Packages">Our Packages</a></li>
-				<li><a href="#" title="Contact Us">About Us</a></li>
+				<li><a href="{{ url ('aboutus') }}" title="About Us">About Us</a></li>
 				<li><a href="{{ url ('contactus') }}" title="Contact Us">Contact Us</a></li>
 				<!--
 				<li><a href="#" title="My Wallet">My Wallet</a></li>
