@@ -343,12 +343,13 @@ footer div {
 
 .veges-item{
 	border: 2px solid #dcdcdc;
-	margin-left: 25px;
+	/**margin-left: 25px;**/
 	width: 210px;
 	height:200px;
 	float:left;
+	background: #e7e4dc;
 }
-
+/**
 .veges-item2{
 	border: 2px solid #dcdcdc;
 	margin: -225px 261px;
@@ -363,14 +364,15 @@ footer div {
 	width: 210px;
 	height:200px;
 	float:left;
-}
+}**/
 
 .veges-item-img{
-	border-bottom: 1px solid #dcdcdc;
+	border-bottom: 2px solid #e3444a;
 	position:absolute;
 	height: 131px;
-	width: 208px;
+	width: 210px;
 	background: #e7e4dc;
+	margin-left: -2px;
 }
 
 .veges-add-btn{
@@ -486,7 +488,7 @@ footer div {
 	position: relative;
 	color: #cf000f;
 	background-color:#D1D5D8;
-	border-radius: 9px;
+	border-radius: 3px;
 	padding-left: 10px;
 }
 
@@ -500,7 +502,7 @@ footer div {
 	position: relative;
 	color: #cf000f;
 	background-color:#D1D5D8;
-	border-radius: 9px;
+	border-radius: 3px;
 	padding-left: 10px;
 }
 
