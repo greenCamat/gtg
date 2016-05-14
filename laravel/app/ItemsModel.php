@@ -5,12 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class FoodItemsModel extends Model
+class ItemsModel extends Model
 {
-    public function getFoodCategory()
+    public function getItemCategory()
     {
-        $food_category = DB::select( DB::raw("SHOW COLUMNS FROM food_category_tb WHERE Field = 'category'") )[0]->Type;
-        preg_match('/^enum\((.*)\)$/', $food_category, $matches);
+        $Item_category = DB::select( DB::raw("SHOW COLUMNS FROM items_tb WHERE Field = 'category'") )[0]->Type;
+        preg_match('/^enum\((.*)\)$/', $Item_category, $matches);
         $enum = array();
         foreach( explode(',', $matches[1]) as $value )
         {
@@ -21,18 +21,18 @@ class FoodItemsModel extends Model
         return $enum;
     }
     
-    public function getFoodItem($food_category)
+    public function getItem($Item_category)
     {
-        $food_data = DB::select('SELECT 
+        $item_data = DB::select('SELECT 
                                     id, category, name, description, price 
                                 FROM 
-                                    food_category_tb 
+                                    items_tb 
                                 WHERE 
                                     category = :category 
-                                AND status_flag = 1', ['category' => $food_category]
+                                AND status_flag = 1', ['category' => $Item_category]
                                 );
-        if(count($food_data[0]) && is_array($food_data))
-            return $food_data;
+        if(count($item_data[0]) && is_array($item_data))
+            return $item_data;
         else
             return false;
     }

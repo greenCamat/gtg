@@ -1,4 +1,4 @@
-var Vegies = function ()
+var Instantfood = function ()
 {
     var self = this;
     
@@ -14,7 +14,7 @@ var Vegies = function ()
         {
             self._request = new Request.JSON(
             {
-                'url' : './vegetables/getVegetablesItem',
+                'url' : './instant-food/getInstantfooditem',
                 'method' : 'GET',
                 'data' : '',
                 'onSuccess' : function(data)
@@ -36,20 +36,20 @@ var Vegies = function ()
     };
 };
 
-var Vegetables = 
+var Instant = 
 {
-    vegiesObj : null,
+    instantfoodsObj : null,
     
     init : function()
     {
         var self = this;
         
-        self.vegiesObj = new Vegies();
-        self.vegiesObj.init();
+        self.instantfoodsObj = new Instantfood();
+        self.instantfoodsObj.init();
     }
 };
 
 window.addEvent('domready', function(){    
   // do stuff when the document has loaded but images have not
-  Vegetables.init();
+  Instant.init();
 });

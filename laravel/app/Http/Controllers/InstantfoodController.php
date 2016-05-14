@@ -8,7 +8,7 @@ use App\Http\Requests;
 use View;
 use App\ItemsModel;
 
-class VegetablesController extends Controller
+class InstantfoodController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +20,7 @@ class VegetablesController extends Controller
         $ItemsModel = $this->initiateItem();
         $itemColumn = $ItemsModel->getItemCategory();
         
-        $itemData = $ItemsModel->getItem('VEGETABLES');
+        $itemData = $ItemsModel->getItem('CANNED GOODS/INSTANT FOOD');
         $temp = array();
         if(count($itemData[0]) && is_array($itemData))
         {
@@ -37,7 +37,7 @@ class VegetablesController extends Controller
             $itemData = $temp;
         }
         
-        return View::make('items.vegetables-item', compact('itemData', 'itemColumn'));
+        return View::make('items.instant-food-item', compact('itemData', 'itemColumn'));
         //return response()->json(array('enum'=> $enum), 200);
     }
     
@@ -47,7 +47,7 @@ class VegetablesController extends Controller
         return $ItemsModel;
     }
     
-    public function getVegetablesItem()
+    public function getInstantfooditem()
     {
         // $foodData = $this->initiateFoodItem()->$getFoodItem('VEGETABLES');
         return response()->json(array("getFOOD!"));

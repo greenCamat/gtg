@@ -29,10 +29,23 @@ Route::get('/contactus', function(){
 
 
 /**Items menu**/
-Route::resource('vegetables', 'VegetablesController');
-Route::resource('getfood', 'VegetablesController@getFood');
 
-Route::get('/fruits', function(){
+Route::resource('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');
+Route::resource('vegetables', 'VegetablesController');
+
+Route::resource('fruits/getFruitsitem', 'FruitsController@getFruitsitem');
+Route::resource('fruits', 'FruitsController');
+
+Route::get('meat-fish/getMeatfishitem', 'MeatfishController@getMeatfishitem');
+Route::resource('meat-fish', 'MeatfishController');
+
+Route::get('instant-food/getInstantfooditem', 'InstantfoodController@getInstantfooditem');
+Route::resource('instant-food', 'InstantfoodController');
+
+/**Items menu**/
+
+
+/**Route::get('/fruits', function(){
 
 	return View::make('items.fruits');
 });
@@ -43,7 +56,7 @@ Route::get('/meat-fish', function(){
 Route::get('/canned-instant-goods', function(){
 
 	return View::make('items.canned-instant-goods');
-});
+});**/
 Route::get('/rice', function(){
 
 	return View::make('items.rice');
@@ -52,7 +65,7 @@ Route::get('/otherservices', function(){
 
 	return View::make('items.otherservices');
 });
-/**Items menu**/
+
 
 
 

@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'GTG - Vegetables')
+@section('title', 'GTG - Meat and Fish')
 @section('content')
 <div role="main" class="page-body">
 
@@ -43,5 +43,5 @@
 @endsection('content')
 
 @section('scripts')
-<script type="text/javascript" src="{{ asset('assets/js/scripts/vegetables.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/js/scripts/meatfish.js') }}"></script>
 @endsection('scripts')

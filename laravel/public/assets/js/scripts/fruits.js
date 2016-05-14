@@ -1,4 +1,4 @@
-var Vegies = function ()
+var Fruit = function ()
 {
     var self = this;
     
@@ -14,7 +14,7 @@ var Vegies = function ()
         {
             self._request = new Request.JSON(
             {
-                'url' : './vegetables/getVegetablesItem',
+                'url' : './fruits/getFruitsitem',
                 'method' : 'GET',
                 'data' : '',
                 'onSuccess' : function(data)
@@ -36,20 +36,20 @@ var Vegies = function ()
     };
 };
 
-var Vegetables = 
+var Fruits = 
 {
-    vegiesObj : null,
+    fruitsObj : null,
     
     init : function()
     {
         var self = this;
         
-        self.vegiesObj = new Vegies();
-        self.vegiesObj.init();
+        self.fruitsObj = new Fruit();
+        self.fruitsObj.init();
     }
 };
 
 window.addEvent('domready', function(){    
   // do stuff when the document has loaded but images have not
-  Vegetables.init();
+  Fruits.init();
 });

@@ -8,7 +8,7 @@ use App\Http\Requests;
 use View;
 use App\ItemsModel;
 
-class VegetablesController extends Controller
+class MeatfishController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,10 +17,10 @@ class VegetablesController extends Controller
      */
     public function index()
     {   
-        $ItemsModel = $this->initiateItem();
-        $itemColumn = $ItemsModel->getItemCategory();
+        $ItemModel = $this->initiateItem();
+        $itemColumn = $ItemModel->getItemCategory();
         
-        $itemData = $ItemsModel->getItem('VEGETABLES');
+        $itemData = $ItemModel->getItem('MEAT/FISH');
         $temp = array();
         if(count($itemData[0]) && is_array($itemData))
         {
@@ -37,20 +37,20 @@ class VegetablesController extends Controller
             $itemData = $temp;
         }
         
-        return View::make('items.vegetables-item', compact('itemData', 'itemColumn'));
+        return View::make('items.meat-fish-item', compact('itemData', 'itemColumn'));
         //return response()->json(array('enum'=> $enum), 200);
     }
     
     private function initiateItem()
     {
-        $ItemsModel = new ItemsModel();
-        return $ItemsModel;
+        $ItemModel = new ItemsModel();
+        return $ItemModel;
     }
     
-    public function getVegetablesItem()
+    public function getMeatfishitem()
     {
         // $foodData = $this->initiateFoodItem()->$getFoodItem('VEGETABLES');
-        return response()->json(array("getFOOD!"));
+        return response()->json(array("getItem!"));
         // $temp = array();
         // if(count($foodData[0]) && is_array($foodData))
         // {
