@@ -31,8 +31,8 @@
                 <label>{{$val['item_name']}} &#x20B1; {{$val['item_price']}} / kilo</label>
             </div>
             <div class="veges-add-btn">
-                <button id="btn-add-item" type="button"><img src="../images/btn/add.png" alt="Add item" /></button>
-                <button id="btn-minus-item" type="button"><img src="../images/btn/minus.png" alt="Remove item" /></button>
+                <button id="btn-add-item_{{$val['item_id']}}" type="button"><img src="../images/btn/add.png" alt="Add item" /></button>
+                <button id="btn-minus-item_{{$val['item_id']}}" type="button" disabled><img src="../images/btn/minus.png" alt="Remove item" /></button>
             </div>
         </div>
         @endforeach
