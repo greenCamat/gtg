@@ -55,7 +55,7 @@
 		<div class="left">
 			<a href="{{ url ('canned-instant-goods') }}" class="darken">
 				<img src="/images/icon/graycanned.png" style="height: 150px;width:150px;">
-				<span>Canned/Instant Food</span>
+				<span>Instant Food</span>
 			</a>
 		</div>
 		<div class="left">
