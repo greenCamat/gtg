@@ -10,26 +10,11 @@ var Vegies = function ()
     
     self.init = function()
     {
-        $$(self.itemCategoryId).removeEvents();
-        $$(self.itemCategoryId).addEvent('change', function()
-        {
-            console.log("the value: ", this.get("value"));
-            console.log("the selected and value: ", this.getSelected().get("value"));
-        });
-        
-        $$(self.addButtonId).removeEvents();
-        $$(self.addButtonId).addEvent('click', function()
-        {
-            var subTotal = $(self.showTotalAmtId).text().toInt();
-            
-            console.log(subTotal);
-        });
-        
         if (!self._request || !self._request.isRunning())
         {
             self._request = new Request.JSON(
             {
-                'url' : './vegetables/create',
+                'url' : './vegetables/getfood',
                 'method' : 'GET',
                 'data' : '',
                 'onSuccess' : function(data)
@@ -38,10 +23,16 @@ var Vegies = function ()
                 },
                 'onError' : function()
                 {
+                    console.log('ERROR?');
                     self._request.stop;
                 }
             }).send();
         }
+    };
+    
+    self.addEvents = function()
+    {
+        
     };
 };
 

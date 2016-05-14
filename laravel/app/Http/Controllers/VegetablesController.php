@@ -18,7 +18,7 @@ class VegetablesController extends Controller
      */
     public function index()
     {   
-        $FoodModel = new FoodItemsModel();
+        $FoodModel = $this->initiateFoodItem();
         $foodColumn = $FoodModel->getFoodCategory();
         
         $foodData = $FoodModel->getFoodItem('VEGETABLES');
@@ -41,6 +41,34 @@ class VegetablesController extends Controller
         return View::make('items.vegetables-item', compact('foodData', 'foodColumn'));
         //return response()->json(array('enum'=> $enum), 200);
     }
+    
+    private function initiateFoodItem()
+    {
+        $FoodModel = new FoodItemsModel();
+        return $FoodModel;
+    }
+    
+    public function getFood()
+    {
+        // $foodData = $this->initiateFoodItem()->$getFoodItem('VEGETABLES');
+        return response()->json(array("getFOOD!"));
+        // $temp = array();
+        // if(count($foodData[0]) && is_array($foodData))
+        // {
+            // foreach($foodData as $val)
+            // {
+                // $temp[] = array(
+                    // 'food_id'   => $val->id,
+                    // 'food_name' => $val->name,
+                    // 'food_desc' => $val->description,
+                    // 'food_price' => $val->price
+                // );
+            // }
+            
+            // $foodData = $temp;
+        // }
+        // return response()->json(array('food'=> $foodData), 200);
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -49,8 +77,8 @@ class VegetablesController extends Controller
      */
     public function create()
     {
-        return "HELLO!";
-        //response()->json(array("dito ba yan? RESTful create?!"));
+        //return "Vegetables Controller function create is call!";
+        return response()->json(array("dito ba yan? RESTful create?!"));
     }
 
     /**
