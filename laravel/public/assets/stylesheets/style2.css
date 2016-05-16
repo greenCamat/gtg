@@ -163,15 +163,22 @@ a.darken:hover span
 .title-page span{
 	font-size: 21px;
 	font-weight: bold;
-	color: #e7e4dc;
+	color: #fff;
 	text-transform: uppercase;
 }
 
-.title-page-veges{
-	font-size: 21px;
-	font-weight: bold;
-	color: #cf000f;
+.item-column{
+  position: absolute;
+  margin: 206px 328px;
 }
+
+.item-column label{
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 21px;
+  font-weight: bold;
+}
+
 .submit-order{
 	margin: 129px 262px;
 }
@@ -233,12 +240,27 @@ a.darken:hover span
 
 
 .header-right { float: right; width: 106px; position: relative; margin-right: 3px;margin-top:-206px;}
-.socials a { background: url(/images/socials.png) no-repeat 0 0; width: 50px; height: 52px;  font-size: 0; line-height: 0; text-indent: -4000px; float: left; transition: margin 0.2s;
+.socials a {width: 200px; height: 52px;  font-size: 0; line-height: 0;
 -moz-transition: margin 0.2s;
 -webkit-transition: margin 0.2s;
 -o-transition: margin 0.2s; }
 .socials a.twitter-ico { background-position: right 0; }
-.socials a.twitter-ico:hover { background-position: right -55px; }
+/**.socials a.twitter-ico:hover { background-position: right -55px; }**/
 .socials a:hover { background-position: 0 -55px; margin-top: -5px; }
+
+/**Contactus**/
+.contactus{
+  /**background: url(/images/wrapper.png) repeat-x;**/
+  position: absolute;
+  width: 100%;
+}
+.contactus-content{
+  margin: 60px 300px;
+}
+
+.contactus-content label{
+  font-size: 21px;
+  color: #fff;
+}
 
 

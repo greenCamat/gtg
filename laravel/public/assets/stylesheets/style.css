@@ -333,52 +333,37 @@ footer div {
 
 .main-wrap-shop-content {
 	border-top: 16px solid #fff;   
-	margin: 0 auto;
+	margin: 53px auto;
 	height: 100%;
 	/**background-color: #e3ded5;**/
-	padding: 149px 318px;
-	position: relative;
+	padding: 250px 318px;
+	/**position: relative;**/
 	top: 53px;
 }
 
 .veges-item{
-	border: 2px solid #dcdcdc;
-	/**margin-left: 25px;**/
+	border: 2px solid #fff;
+	margin-left: 25px;
+	margin-top: 25px;
 	width: 210px;
-	height:200px;
+	height:240px;
 	float:left;
-	background: #e7e4dc;
+	background: #fff;
 }
-/**
-.veges-item2{
-	border: 2px solid #dcdcdc;
-	margin: -225px 261px;
-	width: 210px;
-	height:200px;
-	float:left;
-}
-
-.veges-item3{
-	border: 2px solid #dcdcdc;
-	margin: -225px 522px;
-	width: 210px;
-	height:200px;
-	float:left;
-}**/
 
 .veges-item-img{
 	border-bottom: 2px solid #e3444a;
 	position:absolute;
 	height: 131px;
 	width: 210px;
-	background: #e7e4dc;
+	background: #fff;
 	margin-left: -2px;
 }
 
 .veges-add-btn{
-	margin-top: 161px;
-	height: 65px;
-	width: 208px;
+	margin-top: 205px;
+	/**height: 65px;
+	width: 208px;**/
 	position:absolute;
 }
 
@@ -467,6 +452,21 @@ footer div {
 	margin-top: 138px;
 	position:absolute;
 	margin-left: 9px;
+}
+
+.item-title {
+	position:absolute;
+	margin-left: -9px;
+	font-weight: bold;
+	width: 209px;
+	font-weight: bold;
+}
+
+.item-price {
+	position:absolute;
+	margin: 36px 43px;
+	font-weight: bold;
+	width: 209px;
 	font-weight: bold;
 }
 
@@ -631,11 +631,8 @@ footer div {
 }
 
 .upper-content {
-	/**width: 1016px;
-	float: right;**/
-	padding-top:153px;
-	padding-left: 325px;
-	z-index: 1;
+	width: 100%;
+	padding: 143px 328px;
 	position: absolute;
 }
 

@@ -30,19 +30,19 @@
 
 	<div class="upper-div">
 		<div class="left">
-			<a href="{{ url ('vegetables') }}" class="darken">
+			<a href="{{ url ('condiments') }}" class="darken">
 				<img src="/images/icon/graycondiments.png" style="height: 150px;width:150px;">
 				<span>Condiments</span>
 			</a>
 		</div>
 		<div class="left">
-			<a href="{{ url ('graydairy') }}" class="darken">
+			<a href="{{ url ('dairy') }}" class="darken">
 				<img src="/images/icon/graydairy.png" style="height: 150px;width:150px;">
 				<span>Dairy</span>
 			</a>
 		</div>
 		<div class="left">
-			<a href="{{ url ('meat-fish') }}" class="darken">
+			<a href="{{ url ('chips-snacks') }}" class="darken">
 				<img src="/images/icon/graychips.png" style="height: 150px;width:150px;">
 				<span>Chips/Snacks</span>
 			</a>
@@ -65,7 +65,28 @@
 			</a>
 		</div>
 		<div class="left">
-			<a href="{{ url ('meat-fish') }}" class="darken">
+			<a href="{{ url ('supplies') }}" class="darken">
+				<img src="/images/icon/supplies.png" style="height: 150px;width:150px;">
+				<span>Supplies</span>
+			</a>
+		</div>
+	</div>
+
+	<div class="lower-div">
+		<div class="left">
+			<a href="{{ url ('beverages') }}" class="darken">
+				<img src="/images/icon/beverage.png" style="height: 150px;width:150px;">
+				<span>Beverages</span>
+			</a>
+		</div>
+		<div class="left">
+			<a href="{{ url ('toiletries') }}" class="darken">
+				<img src="/images/icon/toiletries.png" style="height: 150px;width:150px;">
+				<span>Toiletries</span>
+			</a>
+		</div>
+		<div class="left">
+			<a href="{{ url ('otherservices') }}" class="darken">
 				<img src="/images/icon/grayservices.png" style="height: 150px;width:150px;">
 				<span>Other Services</span>
 			</a>
