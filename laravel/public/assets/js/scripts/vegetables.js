@@ -12,6 +12,14 @@ var Vegies = function ()
     
     self.init = function()
     {
+        $(self.itemCategoryId).val('VEGETABLES');
+        self.getData([
+            self.addEvents
+        ]);
+    };
+    
+    self.getData = function(callbacks)
+    {
         if (!self._request || !self._request.isRunning())
         {
             self._request = new Request.JSON(
@@ -21,7 +29,7 @@ var Vegies = function ()
                 'data' : '',
                 'onSuccess' : function(data)
                 {
-                   console.log("API data:  ", data);
+                   //console.log("API data:  ", data);
                    if(data.length)
                    {
                        //mock data
@@ -40,13 +48,19 @@ var Vegies = function ()
                            'price' : '10.35',
                            'remaining_stocks' : 5
                        }];
-                       console.log("mock data: ", data);
+                       //console.log("mock data: ", data);
                        Array.each(data, function(val)
                        {
                            self.lookUpData[val.id] = val;
                        });
                        
-                       self.addEvents();
+                       if(callbacks)
+                        {
+                            Array.each(callbacks, function(callback)
+                            {
+                                callback();
+                            });
+                        }
                    }
                 },
                 'onError' : function()
@@ -63,8 +77,27 @@ var Vegies = function ()
         $$(self.itemCategoryId).removeEvents();
         $$(self.itemCategoryId).addEvent('change', function()
         {
-            console.log("the value: ", this.get("value"));
-            console.log("the selected and value: ", this.getSelected().get("value"));
+            /** this.getSelected().get("value") -> display as ARRAY
+            ** this.get("value") -> display as STRING
+            ** ENUM DATA: 'CANNED GOODS/INSTANT FOOD','CONDIMENTS','DAIRY','FRUITS','MEAT/FISH','RICE','VEGETABLES','CHIPS','BEVERAGES','TOILETRIES','SUPPLIES','OTHERS'
+            ** make the ENUM DATA 
+            **/
+            var category_item = this.get("value"),
+                loc = category_item.toLowerCase().replace(/ /g,'');
+            
+            switch(category_item)
+            {
+                case 'CANNED GOODS/INSTANT FOOD':
+                    loc = 'instant-food';
+                break;
+                case 'MEAT/FISH':
+                    loc = 'meat-fish';
+                break;
+                default:
+                    console.log("Category item not found.");
+            }
+            
+            window.location = location.origin + "/" +loc; //+ this.getSelected().get("value");
         });
         
         $$(self.addButtonId).removeEvents();
@@ -98,18 +131,16 @@ var Vegies = function ()
     {
         var subTotal = $(self.showTotalAmtId).text().toFloat(),
             itemPrice = itemData.price.toFloat(),
-            isAvailableStock = 0,
+            isAvailableStock = self.lookUpData[itemData.id].remaining_stocks,
             totalItems = (subTotal).toFixed(2);
-            //console.log("Available Stocks: ", self.lookUpData[itemData.id].remaining_stocks);
             
             if(btnAction === 'ADD')
             {
                 $(self.minusButtonId).attr('disabled', false);
-                isAvailableStock = self.lookUpData[itemData.id].remaining_stocks--;
-                console.log("available: ", isAvailableStock);
                 if(isAvailableStock)
                 {
                     totalItems = (itemPrice + subTotal).toFixed(2);
+                    self.lookUpData[itemData.id].remaining_stocks--;
                 }
                 else if(isAvailableStock == 0)
                 {
