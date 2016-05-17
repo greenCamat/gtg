@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title', 'GTG - Shop')
+@section('title', 'GTG - Contact Us')
 @section('content')
 <div class="main-wrap-shop-menu">
 	<div class="contactus">

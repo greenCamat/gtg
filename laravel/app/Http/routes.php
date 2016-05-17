@@ -22,8 +22,15 @@ Route::get('/shop', function(){
 	return View::make('pages.shop');
 });
 
+Route::get('/aboutus', function(){
+
+	return View::make('pages.aboutus');
+});
+
 Route::resource('contactus/getContactsData', 'ContactusController@getContactsData');
 Route::resource('contactus', 'ContactusController');
+
+
 
 
 /**Items menu**/
