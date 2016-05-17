@@ -1,3 +1,3 @@
-<footer class="page-footer">
-	<div>Copyright GTG - Groceries TO-GO | 2016</div>
-</footer>
+<div class="page-footer">
+	<div>GTG - J's Marketing Co. | Copyright 2016</div>
+</div>
