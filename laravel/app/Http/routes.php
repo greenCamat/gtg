@@ -28,17 +28,14 @@ Route::resource('contactus', 'ContactusController');
 
 /**Items menu**/
 
-Route::resource('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');
+Route::get('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');
 Route::resource('vegetables', 'VegetablesController');
 
-Route::resource('fruits/getFruitsitem', 'FruitsController@getFruitsitem');
+Route::get('fruits/getFruitsitem', 'FruitsController@getFruitsitem');
 Route::resource('fruits', 'FruitsController');
 
 Route::get('meat-fish/getMeatfishitem', 'MeatfishController@getMeatfishitem');
 Route::resource('meat-fish', 'MeatfishController');
-
-Route::get('instant-food/getInstantfooditem', 'InstantfoodController@getInstantfooditem');
-Route::resource('instant-food', 'InstantfoodController');
 
 Route::get('condiments/getCondimentsitem', 'CondimentsController@getCondimentsitem');
 Route::resource('condiments', 'CondimentsController');
@@ -46,17 +43,20 @@ Route::resource('condiments', 'CondimentsController');
 Route::get('dairy/getDairyitem', 'DairyController@getDairyitem');
 Route::resource('dairy', 'DairyController');
 
-Route::get('rice/getRiceitem', 'RiceController@getRiceitem');
-Route::resource('rice', 'RiceController');
-
 Route::get('chips-snacks/getChipnsnacksitem', 'ChipnsnacksController@getChipnsnacksitem');
 Route::resource('chips-snacks', 'ChipnsnacksController');
 
-Route::get('beverages/getBeveragesitem', 'BeveragesController@getBeveragesitem');
-Route::resource('beverages', 'BeveragesController');
+Route::get('instant-food/getInstantfooditem', 'InstantfoodController@getInstantfooditem');
+Route::resource('instant-food', 'InstantfoodController');
+
+Route::get('rice/getRiceitem', 'RiceController@getRiceitem');
+Route::resource('rice', 'RiceController');
 
 Route::get('supplies/getSuppliesitem', 'SuppliesController@getSuppliesitem');
 Route::resource('supplies', 'SuppliesController');
+
+Route::get('beverages/getBeveragesitem', 'BeveragesController@getBeveragesitem');
+Route::resource('beverages', 'BeveragesController');
 
 Route::get('toiletries/getToiletriesitem', 'ToiletriesController@getToiletriesitem');
 Route::resource('toiletries', 'ToiletriesController');
