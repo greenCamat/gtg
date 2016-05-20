@@ -23,6 +23,10 @@ var ShopItems =
             'OTHERSERVICES' : 'getOtherservicesitem'
         };
         
+        self.selectedItemsDiv = '#selected-items';
+        self.shopItemListDiv = '#shop-item-list';
+        
+        
         $$(self.selectedItem).removeEvents();
         $$(self.selectedItem).addEvent('click', function()
         {
@@ -31,60 +35,61 @@ var ShopItems =
             
             if(Object.contains(categoryObjKeys, itemSelected))
             {
-                if (!self._request || !self._request.isRunning())
-                {
-                    /**
-                    ** NOTE: use a middleware to return the JSON DATA
-                    ** then the CONTROLLER will still be the one to display the VIEW.
-                    **/
-                    self._request = new Request.JSON(
-                    {
-                        'url' : './vegetables/' + self.categoryItems[itemSelected],
-                        'method' : 'GET',
-                        'data' : '',
-                        'onSuccess' : function(data)
-                        {
-                           //console.log("API data:  ", data);
-                           if(data.length)
-                           {
-                               //mock data
-                               data = [{
-                                    'category' : 'VEGETABLES',
-                                    'description': 'baguio petchay',
-                                    'id' : 2,
-                                    'name' : 'PETCHAY',
-                                    'price' : '20.75',
-                                    'remaining_stocks' : 10
-                               }, {
-                                   'category' : 'VEGETABLES',
-                                   'description' : 'manila tondo',
-                                   'id' : 3,
-                                   'name' : 'Beans',
-                                   'price' : '10.35',
-                                   'remaining_stocks' : 5
-                               }];
-                               console.log("mock data: ", data);
-                               // Array.each(data, function(val)
-                               // {
-                                   // self.lookUpData[val.id] = val;
-                               // });
+                console.log("PASOK???");
+                // if (!self._request || !self._request.isRunning())
+                // {
+                //     /**
+                //     ** NOTE: use a middleware to return the JSON DATA
+                //     ** then the CONTROLLER will still be the one to display the VIEW.
+                //     **/
+                //     self._request = new Request.JSON(
+                //     {
+                //         'url' : './vegetables/' + self.categoryItems[itemSelected],
+                //         'method' : 'GET',
+                //         'data' : '',
+                //         'onSuccess' : function(data)
+                //         {
+                //            //console.log("API data:  ", data);
+                //            if(data.length)
+                //            {
+                //                //mock data
+                //                data = [{
+                //                     'category' : 'VEGETABLES',
+                //                     'description': 'baguio petchay',
+                //                     'id' : 2,
+                //                     'name' : 'PETCHAY',
+                //                     'price' : '20.75',
+                //                     'remaining_stocks' : 10
+                //                }, {
+                //                    'category' : 'VEGETABLES',
+                //                    'description' : 'manila tondo',
+                //                    'id' : 3,
+                //                    'name' : 'Beans',
+                //                    'price' : '10.35',
+                //                    'remaining_stocks' : 5
+                //                }];
+                //                console.log("mock data: ", data);
+                //                // Array.each(data, function(val)
+                //                // {
+                //                    // self.lookUpData[val.id] = val;
+                //                // });
                                
-                               // if(callbacks)
-                                // {
-                                    // Array.each(callbacks, function(callback)
-                                    // {
-                                        // callback();
-                                    // });
-                                // }
-                           }
-                        },
-                        'onError' : function()
-                        {
-                            console.log('ERROR?');
-                            self._request.stop;
-                        }
-                    }).send();
-                }
+                //                // if(callbacks)
+                //                 // {
+                //                     // Array.each(callbacks, function(callback)
+                //                     // {
+                //                         // callback();
+                //                     // });
+                //                 // }
+                //            }
+                //         },
+                //         'onError' : function()
+                //         {
+                //             console.log('ERROR?');
+                //             self._request.stop;
+                //         }
+                //     }).send();
+                // }
             }
         });
         

@@ -24,9 +24,9 @@
 	</div>
 	<div class="header-right">
 		<div class="socials">
-			<a href="#"><img src="images/icon/media/facebook.png" title="facebook" alt="facebook"/>facebook</a>
-			<a href="#"><img src="images/icon/media/instagram.png" title="instagram" alt="instagram"/>instagram</a>
-			<a href="#"><img src="images/icon/media/twitter.png" title="twitter" alt="twitter"/>twitter</a>
+			<a href="#"><img src="{{ url ('images/icon/media/facebook.png') }}" title="facebook" alt="facebook"/>facebook</a>
+			<a href="#"><img src="{{ url ('images/icon/media/instagram.png') }}" title="instagram" alt="instagram"/>instagram</a>
+			<a href="#"><img src="{{ url ('images/icon/media/twitter.png') }}" title="twitter" alt="twitter"/>twitter</a>
 		</div>
 	</div>
 </div>

@@ -16,12 +16,6 @@ Route::get('/', function()
 	return View::make('pages.index');
 });
 
-
-Route::get('/shop', function(){
-
-	return View::make('pages.shop');
-});
-
 Route::get('/aboutus', function(){
 
 	return View::make('pages.aboutus');
@@ -34,9 +28,10 @@ Route::resource('contactus', 'ContactusController');
 
 
 /**Items menu**/
+Route::resource('/shop', 'ShopItemsController');
 
 Route::get('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');
-Route::resource('vegetables', 'VegetablesController');
+// Route::resource('vegetables', 'VegetablesController');
 
 Route::get('fruits/getFruitsitem', 'FruitsController@getFruitsitem');
 Route::resource('fruits', 'FruitsController');
