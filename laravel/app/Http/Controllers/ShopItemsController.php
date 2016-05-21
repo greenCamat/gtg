@@ -77,60 +77,12 @@ class ShopItemsController extends Controller
             "TOILETRIES",
             "OTHERSERVICES"
         );
-        
         $item = strtoupper($item);
+        
         // if($item === 'VEGETABLES')
         // {
         //     $pageView = 'items.vegetables-item';
         // }
-        // else if($item === 'FRUITS')
-        // {
-        //     $pageView = 'items.fruits-item';
-        // }
-        // else if($item === 'MEATFISH')
-        // {
-        //     $pageView = 'items.meat-fish-item';
-        // }
-        // else if($item === 'CONDIMENTS')
-        // {
-        //     $pageView = 'items.condiments-item';
-        // }
-        // else if($item === 'DAIRY')
-        // {
-        //     $pageView = 'items.dairy-item';
-        // }
-        // else if($item === 'CHIPSNACKS')
-        // {
-        //     $pageView = 'items.chips-snacks-item';
-        // }
-        // else if($item === 'INSTANTFOOD')
-        // {
-        //     $pageView = 'items.instant-food-item';
-        // }
-        // else if($item === 'RICE')
-        // {
-        //     $pageView = 'items.rice-item';
-        // }
-        // else if($item === 'SUPPLIES')
-        // {
-        //     $pageView = 'items.supplies-item';
-        // }
-        // else if($item === 'BEVERAGES')
-        // {
-        //     $pageView = 'items.beverages-item';
-        // }
-        // else if($item === 'TOILETRIES')
-        // {
-        //     $pageView = 'items.toiletries-item';
-        // }
-        // else if($item === 'OTHERSERVICES')
-        // {
-        //     $pageView = 'items.otherservices-item';
-        // }
-        // else {
-        //     $item = '';
-        // }
-        
         
         if(in_array($item, $food_category_arr))
         {
@@ -149,11 +101,11 @@ class ShopItemsController extends Controller
                 
                 $itemData = $temp;
             }
+            //this will return the VIEW for the selected item
             return View::make($pageView, compact('itemData', 'itemColumn'));
         }
         else {
-            return "HALAA???";
-            //$this->index();
+            $this->index();
         }
     }
 
