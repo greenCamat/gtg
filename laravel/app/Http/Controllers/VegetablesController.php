@@ -17,6 +17,18 @@ class VegetablesController extends Controller
      */
     public function index()
     {   
+        // TODO additional checkking?
+        //return View::make('items.vegetables-item', compact('itemData', 'itemColumn'));
+    }
+    
+    private function initiateItem()
+    {
+        $ItemsModel = new ItemsModel();
+        return $ItemsModel;
+    }
+    
+    public function getVegetablesItem()
+    {
         $ItemsModel = $this->initiateItem();
         $itemColumn = $ItemsModel->getItemCategory();
         
@@ -36,37 +48,7 @@ class VegetablesController extends Controller
             
             $itemData = $temp;
         }
-        
-        return View::make('items.vegetables-item', compact('itemData', 'itemColumn'));
-        //return response()->json(array('enum'=> $enum), 200);
-    }
-    
-    private function initiateItem()
-    {
-        $ItemsModel = new ItemsModel();
-        return $ItemsModel;
-    }
-    
-    public function getVegetablesItem()
-    {
-        // $foodData = $this->initiateFoodItem()->$getFoodItem('VEGETABLES');
-        return response()->json(array("getFOOD!"));
-        // $temp = array();
-        // if(count($foodData[0]) && is_array($foodData))
-        // {
-            // foreach($foodData as $val)
-            // {
-                // $temp[] = array(
-                    // 'food_id'   => $val->id,
-                    // 'food_name' => $val->name,
-                    // 'food_desc' => $val->description,
-                    // 'food_price' => $val->price
-                // );
-            // }
-            
-            // $foodData = $temp;
-        // }
-        // return response()->json(array('food'=> $foodData), 200);
+       return response()->json(array('data'=> $itemData, 'itemColumn'=>$itemColumn), 200);
     }
 
     /**

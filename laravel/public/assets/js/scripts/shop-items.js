@@ -1,48 +1,142 @@
-var SelectedItem = function(response, lookUpData)
+var SelectedItem = function(response, lookUpData, selectedCategory)
 {
     var self = this;
     
-    self.responseData = response;
+    self.responseData = response; //consist of the rawData and the itemColumn(ENUM category)
     self.lookUpData = lookUpData;
+    self.itemCategoryId = '#item-category';
+    self.addButtonId = 'button[id^=btn-add-item_]';
+    self.minusButtonId = 'button[id^=btn-minus-item_]';
+    self.showTotalAmtId = '#total-amt';
+    self.selectedCategory = selectedCategory;
     
     self.init = function()
     {
         console.log("Successful!");
         console.log("json Data: ", self.responseData);
-        console.log("lookUpData: ", self.lookUpData);
+        console.log("lookUpData: ", self.lookUpData[2]);
+        console.log("selected: ", self.selectedCategory.toUpperCase());
+        console.log($$(self.itemCategoryId));
+        
+        $(self.itemCategoryId).val(self.selectedCategory.toUpperCase());
+        self.addEvents();
     };
-}
+    
+    self.addEvents = function()
+    {
+        $$(self.itemCategoryId).removeEvents();
+        $$(self.itemCategoryId).addEvent('change', function()
+        {
+            /** this.getSelected().get("value") -> display as ARRAY
+            ** this.get("value") -> display as STRING
+            ** ENUM DATA: 'CANNED GOODS/INSTANT FOOD','CONDIMENTS','DAIRY','FRUITS','MEAT/FISH','RICE','VEGETABLES','CHIPS','BEVERAGES','TOILETRIES','SUPPLIES','OTHERS'
+            ** make the ENUM DATA 
+            **/
+            var categorySelected = this.get("value").toLowerCase().replace(/ /g,'');
+            
+            ShopItems.initAjaxCall(categorySelected);
+        });
+        
+        $$(self.addButtonId).removeEvents();
+        $$(self.addButtonId).addEvent('click', function()
+        {
+            var itemId = (this).get('id').split('_')[1];
+            
+            $(self.addButtonId).attr('disabled', false);
+            if(self.lookUpData[itemId])
+            {
+                self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
+            }
+            else
+            {
+                alert("No Item Selected.");
+            }
+        });
+        
+        $$(self.minusButtonId).removeEvents();
+        $$(self.minusButtonId).addEvent('click', function()
+        {
+            var itemId = itemId = (this).get('id').split('_')[1];
+            
+            $(self.minusButtonId).attr('disabled', false);
+            if(self.lookUpData[itemId])
+                self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
+        });
+    };
+    
+    self.computeTotalAmount = function(itemData, btnAction)
+    {
+        var subTotal = $(self.showTotalAmtId).text().toFloat(),
+            itemPrice = itemData.price.toFloat(),
+            isAvailableStock = self.lookUpData[itemData.id].remaining_stocks,
+            totalItems = (subTotal).toFixed(2);
+            
+            if(btnAction === 'ADD')
+            {
+                $(self.minusButtonId).attr('disabled', false);
+                if(isAvailableStock)
+                {
+                    totalItems = (itemPrice + subTotal).toFixed(2);
+                    self.lookUpData[itemData.id].remaining_stocks--;
+                }
+                else if(isAvailableStock === 0)
+                {
+                    alert('No more stocks.');
+                    $(self.addButtonId).attr('disabled', true);
+                }
+            }
+            else if(btnAction === 'MINUS')
+            {
+                $(self.addButtonId).attr('disabled', false);
+                if(subTotal !== 0)
+                {
+                    totalItems = (subTotal - itemPrice).toFixed(2);
+                    self.lookUpData[itemData.id].remaining_stocks++;
+                    if(totalItems === 0)
+                        $(self.minusButtonId).attr('disabled', true);
+                }
+            }
+            
+            $(self.showTotalAmtId).html(totalItems);        
+    };
+    
+};
 
 var ShopItems =
 {
     selectedItemObj : null,
     
+    //make a UTIL or CONFIG for this part
+    categoryItemObj : {
+        'vegetables'    : 'getVegetablesItem',
+        'fruits'    : 'getFruitsitem',
+        'meatfish'  : 'getMeatfishitem',
+        'condiments' : 'getCondimentsitem',
+        'dairy'         : 'getDairyitem',
+        'chipsnacks'    : 'getChipnsnacksitem',
+        'instantfood'   : 'getInstantfooditem',
+        'rice'  : 'getRiceitem',
+        'supplies' : 'getSuppliesitem',
+        'beverages' : 'getBeveragesitem',
+        'toiletries' : 'getToiletriesitem',
+        'otherservices' : 'getOtherservicesitem'
+    },
+    
     init : function()
+    {
+        var itemSelected = location.pathname.split('/')[2].toLowerCase();
+        
+        ShopItems.initAjaxCall(itemSelected);
+        console.log("Init ShopItems");
+    },
+    
+    initAjaxCall : function(itemSelected)
     {
         var self = this;
         
-        //get all the link items
-        self.selectedItem = "a[id^=item_]";
-        
-        //make a UTIL or CONFIG for this part
-        self.categoryItems = {
-            'vegetables'    : 'getVegetablesItem',
-            'fruits'    : 'getFruitsitem',
-            'meatfish'  : 'getMeatfishitem',
-            'condiments' : 'getCondimentsitem',
-            'dairy'         : 'getDairyitem',
-            'chipsnacks'    : 'getChipnsnacksitem',
-            'instantfood'   : 'getInstantfooditem',
-            'rice'  : 'getRiceitem',
-            'supplies' : 'getSuppliesitem',
-            'beverages' : 'getBeveragesitem',
-            'toiletries' : 'getToiletriesitem',
-            'otherservices' : 'getOtherservicesitem'
-        };
-        var categoryObjKeys = Object.keys(self.categoryItems),
+        var lookUpData = [],
             URL = location.origin,
-            itemSelected = location.pathname.split('/')[2].toLowerCase(),
-            lookUpData = [];
+            categoryObjKeys = Object.keys(ShopItems.categoryItemObj);
         
         if(Object.contains(categoryObjKeys, itemSelected))
         {
@@ -54,53 +148,35 @@ var ShopItems =
                 **/
                 self._request = new Request.JSON(
                 {
-                    'url' : URL + '/'+itemSelected+'/' + self.categoryItems[itemSelected],
+                    'url' : URL + '/'+itemSelected+'/' + ShopItems.categoryItemObj[itemSelected],
                     'method' : 'GET',
                     'data' : '',
-                    'onSuccess' : function(data)
+                    'onSuccess' : function(response)
                     {
-                        if(data.length)
+                        if(Object.getLength(response))
                         {
-                            //mock data
-                            data = [{
-                                'category' : 'VEGETABLES',
-                                'description': 'baguio petchay',
-                                'id' : 2,
-                                'name' : 'PETCHAY',
-                                'price' : '20.75',
-                                'remaining_stocks' : 10
-                            }, {
-                                'category' : 'VEGETABLES',
-                                'description' : 'manila tondo',
-                                'id' : 3,
-                                'name' : 'Beans',
-                                'price' : '10.35',
-                                'remaining_stocks' : 5
-                            }];
-                            console.log("mock data: ", data);
-                            Array.each(data, function(val)
+                            Array.each(response.data, function(val)
                             {
-                                lookUpData[val.id] = val;
+                                lookUpData[val.item_id] = val;
                             });
-                            self.initSelectedItem(data, lookUpData);
+                            self.initSelectedItem(response, lookUpData, itemSelected);
                         }
                     },
                     'onError' : function()
                     {
-                        console.log('ERROR?');
+                        console.log('Something went wrong...');
                         self._request.stop;
                     }
                 }).send();
             }
         }
-        console.log("Init ShopItems");
     },
     
-    initSelectedItem : function(response, dataLookUp)
+    initSelectedItem : function(response, dataLookUp, selectedCategory)
     {
         var self = this;
         
-        self.selectedItemObj = new SelectedItem(response, dataLookUp);
+        self.selectedItemObj = new SelectedItem(response, dataLookUp, selectedCategory);
         self.selectedItemObj.init();
     }
 };
