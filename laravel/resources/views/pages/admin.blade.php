@@ -8,7 +8,7 @@
             <div class="page-content-wrapper">
             <div class="content-header clearfix">
                 <h1 class="lfloat">Dashboard</h1>
-                <!--<a href="#" class="btn-box btn-new-campaign rfloat">New Campaign</a>-->
+                <a href="#" class="btn-box btn-new-campaign rfloat">ADD Item</a>
             </div>
                 <div class="main-content">
                     <div class="head clearfix">
