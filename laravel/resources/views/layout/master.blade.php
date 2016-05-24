@@ -10,6 +10,7 @@
 
         <link rel="stylesheet" href="{{ asset('assets/stylesheets/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/stylesheets/style2.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/stylesheets/modal.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/stylesheets/jquery.bxslider.css') }}">
       
         <script type="text/javascript" src="{{ asset('assets/js/jquery.min.js') }}"></script>
@@ -24,18 +25,21 @@
         
     </head>
     <body>
+        <div class="page-container">
         <!--the main header-->
         @include('layout.header')
         
         <!--main container-->
-        <div class="page-container">
+        
             @yield('content')
-        </div>
+        
         
         <!--additional script per page-->
         @yield('scripts')
         
         <!--footer-->
+        
+        </div>
         @include('layout.footer')
     </body>
 </html>

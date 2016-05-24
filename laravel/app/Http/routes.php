@@ -21,9 +21,18 @@ Route::get('/aboutus', function(){
 	return View::make('pages.aboutus');
 });
 
+Route::get('/submit-order', function(){
+
+	return View::make('pages.submit-order');
+});
+
 Route::resource('contactus/getContactsData', 'ContactusController@getContactsData');
 Route::resource('contactus', 'ContactusController');
 
+/**For Submit order controller if needed**/
+
+/**Route::resource('submit-order/getOrdersData', 'SubmitorderController@getOrdersData');  
+Route::resource('submit-order', 'SubmitorderController');**/ 
 
 
 

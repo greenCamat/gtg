@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('title', 'GTG - My Profile')
-
+<div role="main" class="page-body">
 	@section('content')
 		<div class="main-content">
 			<div>
@@ -51,5 +51,6 @@
 			    </div>
 			</div>
 		</div>
+</div>
 @endsection
 

@@ -179,10 +179,6 @@ a.darken:hover span
   font-weight: bold;
 }
 
-.submit-order{
-	margin: 129px 262px;
-}
-
 .input{
 	width: 350px;
 }
@@ -195,7 +191,7 @@ a.darken:hover span
 	border-top: 16px solid #fff;
 	background: url(/images/wrapper.png) repeat-x scroll 0 0;
 	position:absolute;
-	margin: 641px 0px;	
+	margin: 532px 0;	
 	width: 100%;
 	height: 100%;
 }
