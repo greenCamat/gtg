@@ -19,6 +19,11 @@
                 </tr>
                 <tr><td>&nbsp;</td></tr>
                 <tr>
+                    <td width="150px"><label>Contact No.: <span>*</span></label></td>
+                    <td><input type="text"/></td>
+                </tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr>
                     <td width="150px"><label>Address: <span>*</span></label></td>
                     <td><input type="text"/></td>
                     <td width="57px"><label> City: <span>*</span></label></td>
