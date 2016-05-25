@@ -24,7 +24,7 @@ class ItemsModel extends Model
     public function getItem($Item_category)
     {
         $item_data = DB::select('SELECT 
-                                    id, category, name, description, price 
+                                    id, category, brand, name, description, remain_stocks, price, status_flag 
                                 FROM 
                                     items_tb 
                                 WHERE 

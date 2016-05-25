@@ -91,10 +91,14 @@ class ShopItemsController extends Controller
             {
                 foreach($itemData as $val)
                 {
+                    //TODO: check, what will happen if the status_flag is zero?
+                    // meaning no more remaining stocks?
                     $temp[] = array(
                         'item_id'   => $val->id,
+                        'item_brand' => $val->brand,
                         'item_name' => $val->name,
                         'item_desc' => $val->description,
+                        'remaining_stock' => $val->remain_stocks,
                         'item_price' => $val->price
                     );
                 }

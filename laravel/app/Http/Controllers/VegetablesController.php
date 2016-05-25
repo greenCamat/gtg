@@ -40,8 +40,10 @@ class VegetablesController extends Controller
             {
                 $temp[] = array(
                     'item_id'   => $val->id,
+                    'item_brand' => $val->brand,
                     'item_name' => $val->name,
                     'item_desc' => $val->description,
+                    'remaining_stock' => $val->remain_stocks,
                     'item_price' => $val->price
                 );
             }

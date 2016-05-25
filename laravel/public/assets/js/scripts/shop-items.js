@@ -12,11 +12,11 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     
     self.init = function()
     {
-        console.log("Successful!");
-        console.log("json Data: ", self.responseData);
-        console.log("lookUpData: ", self.lookUpData[2]);
-        console.log("selected: ", self.selectedCategory.toUpperCase());
-        console.log($$(self.itemCategoryId));
+        // console.log("Successful!");
+        // console.log("json Data: ", self.responseData.data);
+        // console.log("lookUpData: ", self.lookUpData);
+        // console.log("selected: ", self.selectedCategory.toUpperCase());
+        // console.log($$(self.itemCategoryId));
         
         $(self.itemCategoryId).val(self.selectedCategory.toUpperCase());
         self.addEvents();
@@ -40,12 +40,24 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.addButtonId).removeEvents();
         $$(self.addButtonId).addEvent('click', function()
         {
-            var itemId = (this).get('id').split('_')[1];
-            
+            var itemId = (this).get('id').split('_')[1],
+                subTotal = $(self.showTotalAmtId).text().toFloat(),
+                itemPrice = self.lookUpData[itemId].item_price.toFloat(),
+                totalItems = (subTotal).toFixed(2);
+            console.log("lookUpData: ", self.lookUpData[itemId]);
             $(self.addButtonId).attr('disabled', false);
-            if(self.lookUpData[itemId])
+            if(self.lookUpData[itemId].remaining_stock)
             {
-                self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
+                $(self.minusButtonId).attr('disabled', false);
+                
+                totalItems = (itemPrice + subTotal).toFixed(2);
+                self.lookUpData[itemId].remaining_stock--;
+                //self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
+            }
+            else if(self.lookUpData[itemId].remaining_stock === 0)
+            {
+                alert('No more stocks available.');
+                (this).attr('disabled', true);
             }
             else
             {
@@ -56,28 +68,36 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.minusButtonId).removeEvents();
         $$(self.minusButtonId).addEvent('click', function()
         {
-            var itemId = itemId = (this).get('id').split('_')[1];
+            var itemId = (this).get('id').split('_')[1],
+                subTotal = $(self.showTotalAmtId).text().toFloat(),
+                itemPrice = self.lookUpData[itemId].item_price.toFloat(),
+                totalItems = (subTotal).toFixed(2);
             
             $(self.minusButtonId).attr('disabled', false);
-            if(self.lookUpData[itemId])
-                self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
+            if(subTotal !== 0)
+            {
+                totalItems = (subTotal - itemPrice).toFixed(2);
+                self.lookUpData[itemId].remaining_stock++;
+                if(totalItems === 0)
+                    (this).attr('disabled', true);
+            }
+                //self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
         });
     };
     
     self.computeTotalAmount = function(itemData, btnAction)
     {
         var subTotal = $(self.showTotalAmtId).text().toFloat(),
-            itemPrice = itemData.price.toFloat(),
-            isAvailableStock = self.lookUpData[itemData.id].remaining_stocks,
+            itemPrice = itemData.item_price.toFloat(),
+            //isAvailableStock = self.lookUpData[itemData.item_id].remaining_stock,
             totalItems = (subTotal).toFixed(2);
             
             if(btnAction === 'ADD')
             {
-                $(self.minusButtonId).attr('disabled', false);
                 if(isAvailableStock)
                 {
                     totalItems = (itemPrice + subTotal).toFixed(2);
-                    self.lookUpData[itemData.id].remaining_stocks--;
+                    self.lookUpData[itemData.item_id].remaining_stock--;
                 }
                 else if(isAvailableStock === 0)
                 {
@@ -91,7 +111,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 if(subTotal !== 0)
                 {
                     totalItems = (subTotal - itemPrice).toFixed(2);
-                    self.lookUpData[itemData.id].remaining_stocks++;
+                    self.lookUpData[itemData.item_id].remaining_stock++;
                     if(totalItems === 0)
                         $(self.minusButtonId).attr('disabled', true);
                 }
@@ -121,16 +141,17 @@ var ShopItems =
         'toiletries' : 'getToiletriesitem',
         'otherservices' : 'getOtherservicesitem'
     },
+    responseItemData : [],
     
     init : function()
     {
         var itemSelected = location.pathname.split('/')[2].toLowerCase();
         
-        ShopItems.initAjaxCall(itemSelected);
+        ShopItems.initAjaxCall(itemSelected,[ShopItems.initRenderItemList]);
         console.log("Init ShopItems");
     },
     
-    initAjaxCall : function(itemSelected)
+    initAjaxCall : function(itemSelected, callbacks)
     {
         var self = this;
         
@@ -155,10 +176,33 @@ var ShopItems =
                     {
                         if(Object.getLength(response))
                         {
+                            ShopItems.responseItemData = response;
                             Array.each(response.data, function(val)
                             {
                                 lookUpData[val.item_id] = val;
                             });
+                            
+                            //render the itemColumn
+                            Object.each(response.itemColumn, function(val)  
+                            {
+                                var itemColumnElem = new Element('<option />',
+                                {
+                                   'value' : val,
+                                   'text' : val,
+                                   'selected' : (itemSelected ? true : false)
+                                });
+                                $$('#item-category').grab(itemColumnElem);
+                            });
+                            
+                            //render the content item list
+                            if(callbacks)
+                            {
+                                Array.each(callbacks, function(callback)
+                                {
+                                    callback(response);
+                                });
+                            }
+                            
                             self.initSelectedItem(response, lookUpData, itemSelected);
                         }
                     },
@@ -178,6 +222,33 @@ var ShopItems =
         
         self.selectedItemObj = new SelectedItem(response, dataLookUp, selectedCategory);
         self.selectedItemObj.init();
+    },
+    
+    initRenderItemList : function(response)
+    {   
+        Array.each(response.data, function(val, idx)
+        {
+            //TODO : update the img src once the images are ready
+            var contentHTML = '<div class="veges-item-img">'
+                            +   '<img src="../images/veges/Onion-PNG.png" alt="Onion" style="height:130;width:200px;"></img>'
+                            + '</div>'
+                            + '<div class="item-name">'
+                            +   '<label class="item-title">' + val.item_name + '</label>'
+                            +   '<label class="item-price">&#8369; ' + val.item_price + '</label>'
+                            + '</div>'
+                            + '<div class="veges-add-btn">'
+                            +   '<button id="btn-add-item_' + val.item_id + '" type="button"><img src="../images/btn/add.png" alt="Add item"></img></button>'
+                            +   '<button id="btn-minus-item_' + val.item_id + '" type="button" disabled><img src="../images/btn/minus.png" alt="Remove item"></img></button>'
+                            + '</div>';
+            contentListElem = new Element('<div />',
+            {
+                'id' : 'veges-item_' + val.item_id,
+                'class' : 'veges-item',
+                'html' : contentHTML
+            });
+            $$('#veges-item_' +val.item_id).dispose();
+            $$('#item-data-list').grab(contentListElem);
+        });
     }
 };
 
