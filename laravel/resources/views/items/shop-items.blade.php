@@ -17,29 +17,13 @@
     <div class="item-column">
         <label>Items:</label> 
             <select id="item-category" style="font-size: 15px;border-radius: 3px;font-weight: bold;">
-                @foreach($itemColumn as $val)
-                    <option value="{{$val}}">{{$val}}</option>
-                @endforeach
+                <!--render-->
             </select>
     </div>
 
     
-    <div class="main-wrap-shop-content">
-        @foreach($itemData as $val)
-        <div class="veges-item">
-            <div class="veges-item-img">
-                <img src="../images/veges/Onion-PNG.png" alt="Onion" style="height:130;width:200px;" />
-            </div>
-            <div class="item-name">
-                <label class="item-title">{{$val['item_name']}}</label>
-                <label class="item-price">&#8369; {{$val['item_price']}}</label>
-            </div>
-            <div class="veges-add-btn">
-                <button id="btn-add-item_{{$val['item_id']}}" type="button"><img src="../images/btn/add.png" alt="Add item" /></button>
-                <button id="btn-minus-item_{{$val['item_id']}}" type="button" disabled><img src="../images/btn/minus.png" alt="Remove item" /></button>
-            </div>
-        </div>
-        @endforeach
+    <div id="item-data-list" class="main-wrap-shop-content">
+        <!--render-->
     </div>
     
 
