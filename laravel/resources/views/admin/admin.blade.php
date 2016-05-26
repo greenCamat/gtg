@@ -13,7 +13,6 @@
                 <div class="main-content">
                     <div class="head clearfix">
                         <h2 class="lfloat">Overview</h2>
-                        <input type="text" class="inpt-calendar rfloat" value="Aug 13, 2013 - Aug 19, 2013">
                     </div>
                 <ul class="overview-wrapper clearfix">
                     <li>

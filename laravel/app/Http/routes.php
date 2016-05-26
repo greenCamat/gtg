@@ -80,5 +80,11 @@ Route::resource('otherservices', 'OtherservicesController');
 
 Route::get('/admin', function(){
 
-	return View::make('pages.admin');
+	return View::make('admin.admin');
 });
+
+Route::get('/admin/orders', function(){
+
+	return View::make('admin.orders');
+});
+
