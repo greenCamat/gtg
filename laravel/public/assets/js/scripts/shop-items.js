@@ -40,24 +40,18 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.addButtonId).removeEvents();
         $$(self.addButtonId).addEvent('click', function()
         {
-            var itemId = (this).get('id').split('_')[1],
-                subTotal = $(self.showTotalAmtId).text().toFloat(),
-                itemPrice = self.lookUpData[itemId].item_price.toFloat(),
-                totalItems = (subTotal).toFixed(2);
-            console.log("lookUpData: ", self.lookUpData[itemId]);
-            $(self.addButtonId).attr('disabled', false);
+            var itemId = (this).get('id').split('_')[1];
+            
+            $(this).attr('disabled', false);
             if(self.lookUpData[itemId].remaining_stock)
             {
-                $(self.minusButtonId).attr('disabled', false);
-                
-                totalItems = (itemPrice + subTotal).toFixed(2);
-                self.lookUpData[itemId].remaining_stock--;
-                //self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
+                $("#btn-minus-item_"+itemId).attr('disabled', false);
+                self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
             }
             else if(self.lookUpData[itemId].remaining_stock === 0)
             {
-                alert('No more stocks available.');
-                (this).attr('disabled', true);
+                alert('No more available stocks.');
+                $(this).attr('disabled', true);
             }
             else
             {
@@ -69,19 +63,17 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.minusButtonId).addEvent('click', function()
         {
             var itemId = (this).get('id').split('_')[1],
-                subTotal = $(self.showTotalAmtId).text().toFloat(),
-                itemPrice = self.lookUpData[itemId].item_price.toFloat(),
-                totalItems = (subTotal).toFixed(2);
-            
-            $(self.minusButtonId).attr('disabled', false);
-            if(subTotal !== 0)
+                totalAmt = $(self.showTotalAmtId).text();
+  
+            $(this).attr('disabled', false);
+            if(totalAmt === '0.00')
             {
-                totalItems = (subTotal - itemPrice).toFixed(2);
-                self.lookUpData[itemId].remaining_stock++;
-                if(totalItems === 0)
-                    (this).attr('disabled', true);
+                $(this).attr('disabled', true);
+                $("#btn-add-item_"+itemId).attr('disabled', false);
             }
-                //self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
+            else {
+               self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
+            }
         });
     };
     
@@ -89,7 +81,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     {
         var subTotal = $(self.showTotalAmtId).text().toFloat(),
             itemPrice = itemData.item_price.toFloat(),
-            //isAvailableStock = self.lookUpData[itemData.item_id].remaining_stock,
+            isAvailableStock = self.lookUpData[itemData.item_id].remaining_stock,
             totalItems = (subTotal).toFixed(2);
             
             if(btnAction === 'ADD')
@@ -102,21 +94,21 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 else if(isAvailableStock === 0)
                 {
                     alert('No more stocks.');
-                    $(self.addButtonId).attr('disabled', true);
                 }
             }
             else if(btnAction === 'MINUS')
             {
-                $(self.addButtonId).attr('disabled', false);
                 if(subTotal !== 0)
                 {
                     totalItems = (subTotal - itemPrice).toFixed(2);
-                    self.lookUpData[itemData.item_id].remaining_stock++;
-                    if(totalItems === 0)
+                    if(parseInt(totalItems) <= 0 )
+                    {
+                        totalItems = '0.00';
                         $(self.minusButtonId).attr('disabled', true);
+                    }    
+                    self.lookUpData[itemData.item_id].remaining_stock++;
                 }
             }
-            
             $(self.showTotalAmtId).html(totalItems);        
     };
     
