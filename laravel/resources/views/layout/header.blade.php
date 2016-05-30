@@ -1,4 +1,4 @@
- <div class="page-header">
+ <header class="page-header clearfix">
     <nav class="header-navigation">
     	<h1 class="logo"><a href="index.html">GTG</a></h1>
         <!--<ul>
@@ -29,4 +29,4 @@
 			<a href="#"><img src="{{ url ('images/icon/media/twitter.png') }}" title="twitter" alt="twitter"/>twitter</a>
 		</div>
 	</div>
-</div>
+</header>

@@ -1,12 +1,13 @@
 <!-- Stored in resources/views/layouts/master.blade.php -->
-
+<!DOCTYPE html>
 <html>
     <head>
+        <meta charset="UTF-8">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>@yield('title')</title>
         <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="{{ asset('assets/stylesheets/style.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/stylesheets/style2.css') }}">
@@ -26,20 +27,11 @@
     </head>
     <body>
         <div class="page-container">
-        <!--the main header-->
-        @include('layout.header')
-        
-        <!--main container-->
-        
-            @yield('content')
-        
-        
-        <!--additional script per page-->
-        @yield('scripts')
-        
-        <!--footer-->
-        
-        </div>
+            @include('layout.header')
+                @yield('content')
+            @yield('scripts')
+         </div>
         @include('layout.footer')
     </body>
+   
 </html>

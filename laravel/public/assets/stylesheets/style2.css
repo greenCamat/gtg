@@ -1,11 +1,11 @@
 /**Items Menu Icons**/
 .upper-div{
-	width:100%;
+	width:65%;
   	clear:both;
   	margin:135px 330px;
 }
 .lower-div{
-	width:100%;
+	width:65%;
   	clear:both;
   	margin:135px 330px;
 }
@@ -136,15 +136,14 @@ a.darken:hover span
 }
 
 .main-content{
-	float: left;
-   	margin: -3px 147px;
+   	margin: 10px 157px;
    	width: 100%;
   	height: 100%;
    	background: url(/images/slider.png) no-repeat scroll 0 0;
-   	padding-top: 80px;
-   	clear:both;
+   	padding: 76px 10px;
+   /**	clear:both;
    	overflow:hidden;
-   	position: absolute;
+   	position: absolute;**/
 }
 
 .submit-main-content{
@@ -190,15 +189,15 @@ a.darken:hover span
 	/**height: 100%;**/
 	border-top: 16px solid #fff;
 	background: url(/images/wrapper.png) repeat-x scroll 0 0;
-	position:absolute;
-	margin: 532px 0;	
+	/**margin: 532px 0;	**/
 	width: 100%;
 	height: 100%;
+  color: #939393;
 }
 .Table-content
 {
     display: table;
-    margin: 53px 14px;
+   /** margin: 53px 14px;**/
 }
 .Title
 {
@@ -221,7 +220,7 @@ a.darken:hover span
 .Cell
 {
     display: table-cell;
-    padding-right: 70px;
+    padding: 27px;
 
 }
 /**end**/

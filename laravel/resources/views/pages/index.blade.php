@@ -1,7 +1,8 @@
 @extends('layout.master')
 @section('title', 'GTG - My Profile')
+@section('content')
 <div role="main" class="page-body">
-	@section('content')
+	
 		<div class="main-content">
 			<div>
 				<div class="slider2">
@@ -50,6 +51,7 @@
 			        </div>
 			    </div>
 			</div>
+			<div style="height: 40px;"></div>
 		</div>
 </div>
 @endsection

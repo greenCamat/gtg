@@ -1,3 +1,3 @@
-<div class="page-footer">
+<footer class="page-footer">
 	<div>GTG - J's Marketing Co. | Copyright 2016</div>
-</div>
+</footer>
