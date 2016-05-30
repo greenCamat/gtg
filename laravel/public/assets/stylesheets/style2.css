@@ -1,25 +1,33 @@
 /**Items Menu Icons**/
 .upper-div{
-	width:65%;
-  	clear:both;
-  	margin:135px 330px;
+	width:100%;
+  	/**margin:135px 330px;**/
 }
-.lower-div{
-	width:65%;
-  	clear:both;
-  	margin:135px 330px;
-}
-.left{
-	
-	float:left;
-	width:33%;
-	height: 222px;
-	width:250px;
+.upper-div:before,.upper-div:after{ 
+  overflow:hidden; 
+  content:""; 
+  display:table; 
 }
 
-/**.upper-div > div {
-  margin:10px;
+.upper-div:after { clear:both; }
+
+.left{
+	display: inline-block;
+  width:15%;
 }
+
+.upper-div > div {
+  margin:20px;
+}
+
+/**
+.lower-div{
+  width:65%;
+    clear:both;
+    margin:135px 330px;
+}
+
+
 
 .lower-div > div {
   margin:10px;
@@ -154,9 +162,10 @@ a.darken:hover span
 }
 
 .title-page{
-	position: absolute;
-	padding: 50px 622px;
-	z-index: 1;
+  padding: 50px 622px;
+	/**position: absolute;
+	
+	z-index: 1;**/
 }
 
 .title-page span{
