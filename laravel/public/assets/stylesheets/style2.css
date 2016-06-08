@@ -254,8 +254,8 @@ a.darken:hover span
 
 /**Contactus**/
 .contactus{
-  /**background: url(/images/wrapper.png) repeat-x;**/
-  position: absolute;
+  /**background: url(/images/wrapper.png) repeat-x;
+  position: absolute;**/
   width: 100%;
 }
 .contactus-content{
