@@ -37,6 +37,7 @@ Route::resource('submit-order', 'SubmitorderController');**/
 
 
 /**Items menu**/
+Route::get('/shop/selectedCategory/{item}', 'ShopItemsController@selectedCategory');
 Route::resource('/shop', 'ShopItemsController');
 
 Route::get('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');

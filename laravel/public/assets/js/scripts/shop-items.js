@@ -4,11 +4,13 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     
     self.responseData = response; //consist of the rawData and the itemColumn(ENUM category)
     self.lookUpData = lookUpData;
+    self.selectedCategory = selectedCategory;
     self.itemCategoryId = '#item-category';
     self.addButtonId = 'button[id^=btn-add-item_]';
     self.minusButtonId = 'button[id^=btn-minus-item_]';
     self.showTotalAmtId = '#total-amt';
-    self.selectedCategory = selectedCategory;
+    self.reviewPurchasedId = '#review-purchased';
+    
     
     self.init = function()
     {
@@ -75,6 +77,12 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
             }
         });
+        
+        $$(self.reviewPurchasedId).removeEvents();
+        $$(self.reviewPurchasedId).addEvent('click', function()
+        {
+            console.log("click");
+        });
     };
     
     self.computeTotalAmount = function(itemData, btnAction)
@@ -112,6 +120,10 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
             $(self.showTotalAmtId).html(totalItems);        
     };
     
+    self.reviewRenderPurchased = function()
+    {
+        
+    };
 };
 
 var ShopItems =
@@ -161,7 +173,7 @@ var ShopItems =
                 **/
                 self._request = new Request.JSON(
                 {
-                    'url' : URL + '/'+itemSelected+'/' + ShopItems.categoryItemObj[itemSelected],
+                    'url' : URL + '/shop/selectedCategory/'+itemSelected,//+'/' + ShopItems.categoryItemObj[itemSelected],
                     'method' : 'GET',
                     'data' : '',
                     'onSuccess' : function(response)

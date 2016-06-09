@@ -38,7 +38,7 @@
                         <h3>Grocery List</h3>
                     </div>
                     <tr>
-                        <th>Qty.</th>
+                        <th>Quantity</th>
                         <th>Product Name</th>
                         <th>Amount</th>
                     </tr>
@@ -50,16 +50,6 @@
                                 White Onion
                             </div>
                            
-                        </td>
-                        <td width="50" class="label-cell"><label>450</label></td>
-                    </tr>
-                    <tr>
-                        <td width="50" class="label-cell"><label>3pcs</label></td>
-                        <td width="350" class="label-cell">
-                            
-                            <div class="import-contact-wrap">
-                                Native Tomatoes(Kamatis)
-                            </div>
                         </td>
                         <td width="50" class="label-cell"><label>450</label></td>
                     </tr>
