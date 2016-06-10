@@ -10,16 +10,16 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     self.minusButtonId = 'button[id^=btn-minus-item_]';
     self.showTotalAmtId = '#total-amt';
     self.reviewPurchasedId = '#review-purchased';
-    
+    self.itemToPurchase = {
+        "quantity" : 0
+    };
     
     self.init = function()
     {
-        // console.log("Successful!");
-        // console.log("json Data: ", self.responseData.data);
-        // console.log("lookUpData: ", self.lookUpData);
-        // console.log("selected: ", self.selectedCategory.toUpperCase());
-        // console.log($$(self.itemCategoryId));
-        
+        /**
+         * REMOVE the modalDialog class to hide the modal
+         *  */
+        //$$("#reviewList").addClass("modalDialog");
         $(self.itemCategoryId).val(self.selectedCategory.toUpperCase());
         self.addEvents();
     };
@@ -68,10 +68,10 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 totalAmt = $(self.showTotalAmtId).text();
   
             $(this).attr('disabled', false);
+            $("#btn-add-item_"+itemId).attr('disabled', false);
             if(totalAmt === '0.00')
             {
                 $(this).attr('disabled', true);
-                $("#btn-add-item_"+itemId).attr('disabled', false);
             }
             else {
                self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
@@ -82,6 +82,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.reviewPurchasedId).addEvent('click', function()
         {
             console.log("click");
+            //$$("#reviewList").addClass("modalDialog");
         });
     };
     
@@ -90,7 +91,11 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         var subTotal = $(self.showTotalAmtId).text().toFloat(),
             itemPrice = itemData.item_price.toFloat(),
             isAvailableStock = self.lookUpData[itemData.item_id].remaining_stock,
-            totalItems = (subTotal).toFixed(2);
+            totalItems = (subTotal).toFixed(2),
+            itemCount = 0;
+            
+            if(self.lookUpData[itemData.item_id].quantity === undefined)
+                Object.append(self.lookUpData[itemData.item_id], self.itemToPurchase);
             
             if(btnAction === 'ADD')
             {
@@ -98,6 +103,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 {
                     totalItems = (itemPrice + subTotal).toFixed(2);
                     self.lookUpData[itemData.item_id].remaining_stock--;
+                    self.lookUpData[itemData.item_id].quantity++;
                 }
                 else if(isAvailableStock === 0)
                 {
@@ -113,16 +119,43 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                     {
                         totalItems = '0.00';
                         $(self.minusButtonId).attr('disabled', true);
-                    }    
+                    }
+                    
+                    if(self.lookUpData[itemData.item_id].quantity > 0)
+                        self.lookUpData[itemData.item_id].quantity--;
+                    
                     self.lookUpData[itemData.item_id].remaining_stock++;
                 }
             }
-            $(self.showTotalAmtId).html(totalItems);        
+            var itemToRender = [{
+                "item_id" : self.lookUpData[itemData.item_id].item_id,
+                "item_name" : self.lookUpData[itemData.item_id].item_name,
+                "item_quantity" : self.lookUpData[itemData.item_id].quantity,
+                "item_price" : self.lookUpData[itemData.item_id].item_price
+            }];
+            $(self.showTotalAmtId).html(totalItems);
+            
+            $("#totalAmtPurchase").html(totalItems);
+            self.reviewRenderPurchased(itemToRender);
     };
     
-    self.reviewRenderPurchased = function()
+    self.reviewRenderPurchased = function(data)
     {
-        
+        Array.each(data, function(val){
+            var contentHTML = '<td width="50" class="label-cell"><label>' + val.item_quantity + '</label></td>'
+                            + '<td width="350"><label>' + val.item_name + '</label></td>'
+                            + '<td width="50"><label>' + val.item_price + '</label></td>';
+            
+            
+            contentListElem = new Element('<tr />',
+            {
+                'id' : 'purchased_' + val.item_id,
+                'class' : 'purchased-item',
+                'html' : contentHTML
+            });
+            $$('#purchased_' +val.item_id).dispose();
+            $$('#renderPurchased').grab(contentListElem);
+        });
     };
 };
 

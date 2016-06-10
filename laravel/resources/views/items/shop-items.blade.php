@@ -30,40 +30,36 @@
 
 
 <div id="reviewList" class="modalDialog">
-            <div>
-                <a href="#" class="close">X</a>
-                <p><br />
-                <table class="rvw-list" border="1" align="center">
-                    <div class="modal-header">
-                        <h3>Grocery List</h3>
-                    </div>
-                    <tr>
-                        <th>Quantity</th>
-                        <th>Product Name</th>
-                        <th>Amount</th>
-                    </tr>
-                    <tr>
-                        <td width="50" class="label-cell"><label>3pcs</label></td>
-                        <td width="350" class="label-cell">
-                            
-                            <div class="import-contact-wrap">
-                                White Onion
-                            </div>
-                           
-                        </td>
-                        <td width="50" class="label-cell"><label>450</label></td>
-                    </tr>
-                </table>
-                <div class="modal-header">
-                    <h3>Total Amount: &#x20B1; 900.00</h3>
-                </div>
-                <div class="modal-btn-wrap">
-                    <button><a href="#" class="btn">Submit Order</a></button>
-                    <button><a href="#" class="btn btn-close">Shop more</a></button>
-                </div>
-                </p>
+    <div>
+        <a href="#" class="close">X</a>
+        <br />
+        <table class="rvw-list" border="1" align="center">
+            <div class="modal-header">
+                <h3>Grocery List</h3>
             </div>
+            
+            <th>Quantity</th>
+            <th>Product Name</th>
+            <th>Amount</th>
+            
+            <tbody id="renderPurchased">
+                <!--<td width="50" class="label-cell"><label>3pcs</label></td>
+                <td width="350" class="label-cell">
+                    <div class="import-contact-wrap">
+                    White Onion
+                    </div>
+                </td>
+                <td width="50" class="label-cell"><label>450</label></td>-->
+            </tbody>
+        </table>
+        <div class="modal-header">
+            <h3>Total Amount: &#x20B1; <span id="totalAmtPurchase" class="total-amt">0.00</span></h3>
         </div>
+        <div class="modal-btn-wrap">
+            <button><a href="#" class="btn">Submit Order</a></button>
+            <button><a href="#" class="btn btn-close">Shop more</a></button>
+        </div>
+    </div>
 </div>
 @endsection('content')
 
