@@ -36,7 +36,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
             **/
             var categorySelected = this.get("value").toLowerCase().replace(/ /g,'');
             
-            ShopItems.initAjaxCall(categorySelected);
+            ShopItems.initAjaxCall(categorySelected, [ShopItems.initRenderItemList]);
         });
         
         $$(self.addButtonId).removeEvents();
@@ -262,30 +262,37 @@ var ShopItems =
     },
     
     initRenderItemList : function(response)
-    {   
-        Array.each(response.data, function(val, idx)
-        {
-            //TODO : update the img src once the images are ready
-            var contentHTML = '<div class="veges-item-img">'
-                            +   '<img src="../images/veges/Onion-PNG.png" alt="Onion" style="height:130;width:200px;"></img>'
-                            + '</div>'
-                            + '<div class="item-name">'
-                            +   '<label class="item-title">' + val.item_name + '</label>'
-                            +   '<label class="item-price">&#8369; ' + val.item_price + '</label>'
-                            + '</div>'
-                            + '<div class="veges-add-btn">'
-                            +   '<button id="btn-add-item_' + val.item_id + '" type="button"><img src="../images/btn/add.png" alt="Add item"></img></button>'
-                            +   '<button id="btn-minus-item_' + val.item_id + '" type="button" disabled><img src="../images/btn/minus.png" alt="Remove item"></img></button>'
-                            + '</div>';
-            contentListElem = new Element('<div />',
+    {
+        /**
+         * TODO: if the remaining_stock is zero, the display picture should be gray scaled 
+         * indicating that the product is not available ( N/A ).
+         */
+        $$('#item-data-list').set("html", "");
+        if(response) {
+            Array.each(response.data, function(val, idx)
             {
-                'id' : 'veges-item_' + val.item_id,
-                'class' : 'veges-item',
-                'html' : contentHTML
+                //TODO : update the img src once the images are ready
+                var contentHTML = '<div class="veges-item-img">'
+                                +   '<img src="../images/veges/Onion-PNG.png" alt="Onion" style="height:130;width:200px;"></img>'
+                                + '</div>'
+                                + '<div class="item-name">'
+                                +   '<label class="item-title">' + val.item_name + '</label>'
+                                +   '<label class="item-price">&#8369; ' + val.item_price + '</label>'
+                                + '</div>'
+                                + '<div class="veges-add-btn">'
+                                +   '<button id="btn-add-item_' + val.item_id + '" type="button"><img src="../images/btn/add.png" alt="Add item"></img></button>'
+                                +   '<button id="btn-minus-item_' + val.item_id + '" type="button" disabled><img src="../images/btn/minus.png" alt="Remove item"></img></button>'
+                                + '</div>';
+                contentListElem = new Element('<div />',
+                {
+                    'id' : 'veges-item_' + val.item_id,
+                    'class' : 'veges-item',
+                    'html' : contentHTML
+                });
+                $$('#veges-item_' +val.item_id).dispose();
+                $$('#item-data-list').grab(contentListElem);
             });
-            $$('#veges-item_' +val.item_id).dispose();
-            $$('#item-data-list').grab(contentListElem);
-        });
+        }
     }
 };
 
