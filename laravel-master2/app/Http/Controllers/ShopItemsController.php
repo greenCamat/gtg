@@ -48,7 +48,54 @@ class ShopItemsController extends Controller
     {
         //
     }
-
+    public function selectedCategory($item)
+    {
+        $ItemsModel = $this->initiateItem();
+        $itemColumn = $ItemsModel->getItemCategory();
+        
+        $itemData = [];
+        $temp = array();
+        $pageView = 'items.shop-items';
+        $food_category_arr = array(
+            "VEGETABLES",
+            "FRUITS",
+            "MEATFISH",
+            "CONDIMENTS",
+            "DAIRY",
+            "CHIPSNACKS",
+            "INSTANTFOOD",
+            "RICE",
+            "SUPPLIES",
+            "BEVERAGES",
+            "TOILETRIES",
+            "OTHERSERVICES"
+        );
+        $item = strtoupper($item);
+        
+        if(in_array($item, $food_category_arr))
+        {
+            $itemData = $ItemsModel->getItem($item);
+            if(count($itemData[0]) && is_array($itemData))
+            {
+                foreach($itemData as $val)
+                {
+                    //TODO: check, what will happen if the status_flag is zero?
+                    // meaning no more remaining stocks?
+                    $temp[] = array(
+                        'item_id'   => $val->id,
+                        'item_brand' => $val->brand,
+                        'item_name' => $val->name,
+                        'item_desc' => $val->description,
+                        'remaining_stock' => $val->remain_stocks,
+                        'item_price' => $val->price
+                    );
+                }
+                
+                $itemData = $temp;
+                return response()->json(array('data'=> $itemData, 'itemColumn'=>$itemColumn), 200);
+            }
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -86,27 +133,8 @@ class ShopItemsController extends Controller
         
         if(in_array($item, $food_category_arr))
         {
-            $itemData = $ItemsModel->getItem($item);
-            if(count($itemData[0]) && is_array($itemData))
-            {
-                foreach($itemData as $val)
-                {
-                    //TODO: check, what will happen if the status_flag is zero?
-                    // meaning no more remaining stocks?
-                    $temp[] = array(
-                        'item_id'   => $val->id,
-                        'item_brand' => $val->brand,
-                        'item_name' => $val->name,
-                        'item_desc' => $val->description,
-                        'remaining_stock' => $val->remain_stocks,
-                        'item_price' => $val->price
-                    );
-                }
-                
-                $itemData = $temp;
-            }
-            //this will return the VIEW for the selected item
             return View::make($pageView, compact('itemData', 'itemColumn'));
+            
         }
         else {
             $this->index();

@@ -16,5 +16,10 @@ Route::get('/', function()
 	return View::make('pages.index');
 });
 
+Route::get('/aboutus', function(){
+
+	return View::make('pages.aboutus');
+});
+
+Route::get('/shop/selectedCategory/{item}', 'ShopItemsController@selectedCategory');
 Route::resource('/shop', 'ShopItemsController');
-Route::get('vegetables/getVegetablesItem', 'VegetablesController@getVegetablesItem');

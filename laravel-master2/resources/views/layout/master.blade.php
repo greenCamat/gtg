@@ -54,7 +54,7 @@
 	                        <a href="packages.html">Packages</a>
 	                    </li>
 	                    <li>
-	                        <a href="aboutus.html">About Us</a>
+	                        <a href="{{ url ('aboutus') }}">About Us</a>
 	                    </li>
 	                    <li>
 	                        <a href="contactus.html">Contact Us</a>
