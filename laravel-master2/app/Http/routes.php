@@ -21,5 +21,10 @@ Route::get('/aboutus', function(){
 	return View::make('pages.aboutus');
 });
 
+Route::get('/submit-order', function(){
+
+	return View::make('pages.submit-order');
+});
+
 Route::get('/shop/selectedCategory/{item}', 'ShopItemsController@selectedCategory');
 Route::resource('/shop', 'ShopItemsController');

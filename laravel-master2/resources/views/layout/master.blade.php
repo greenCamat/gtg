@@ -138,15 +138,17 @@
         
         		@include('layout.footer')
         	</div>
-         
-
+     
          	<script type="text/javascript" src="{{ asset('assets/js/jquery.js') }}"></script>
          	<script type="text/javascript" src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
-
+         	
         	<script>
 			    $('.carousel').carousel({
 			        interval: 5000 //changes the speed
 			    })
    			</script>
+
+
+
 	</body>
 </html>
