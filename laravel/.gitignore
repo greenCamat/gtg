@@ -4,6 +4,6 @@
 Homestead.yaml
 Homestead.json
 .env
-
+/bootstrap
 /bootstrap/vendor
 /bootstrap/vendor/*
