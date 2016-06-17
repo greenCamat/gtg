@@ -22,7 +22,7 @@
         <div class="col-sm-3 col-md-3 pull-right">
             <form class="navbar-form" role="search">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" />
                     <div class="input-group-btn">
                         <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
                     </div>
@@ -41,6 +41,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Grocery List</h4>
+         <div align="right"><span style="font-weight: bold;">Total Amount: &#x20B1; 20.75<span></div>
       </div>
         <div class="modal-body">
             <div class="table-responsive">          
@@ -75,7 +76,10 @@
                 </tbody>
               </table>
             </div>
-        </div>
+            <div align="right">
+                <button type="button" class="btn btn-success">Submit order</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
       </div>
     </div>
 
