@@ -42,22 +42,15 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.addButtonId).removeEvents();
         $$(self.addButtonId).addEvent('click', function()
         {
-            var itemId = (this).get('id').split('_')[1];
+            var itemId = (this).get('id').split('_')[1],
+                itemQuantity = $("#item-quantity_" + itemId).text().toInt();
             
-            $(this).attr('disabled', false);
-            if(self.lookUpData[itemId].remaining_stock)
-            {
-                $("#btn-minus-item_"+itemId).attr('disabled', false);
+            itemQuantity++;
+            if(itemQuantity > 999) {
+                itemQuantity = 999;
+            } else {
+                $("#item-quantity_"+itemId).html(' '+itemQuantity);
                 self.computeTotalAmount(self.lookUpData[itemId], 'ADD');
-            }
-            else if(self.lookUpData[itemId].remaining_stock === 0)
-            {
-                alert('No more available stocks.');
-                $(this).attr('disabled', true);
-            }
-            else
-            {
-                alert("No Item Selected.");
             }
         });
         
@@ -65,17 +58,17 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         $$(self.minusButtonId).addEvent('click', function()
         {
             var itemId = (this).get('id').split('_')[1],
-                totalAmt = $(self.showTotalAmtId).text();
-  
-            $(this).attr('disabled', false);
-            $("#btn-add-item_"+itemId).attr('disabled', false);
-            if(totalAmt === '0.00')
-            {
-                $(this).attr('disabled', true);
+                itemQuantity = $("#item-quantity_" + itemId).text().toInt();
+                
+            if(itemQuantity <= 0) {
+                itemQuantity = 0;
+            } else {
+                itemQuantity--;
+                self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
             }
-            else {
-               self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
-            }
+            
+            $("#item-quantity_"+itemId).html(' '+itemQuantity);
+            
         });
         
         $$(self.reviewPurchasedId).removeEvents();
@@ -91,24 +84,16 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
         var subTotal = $(self.showTotalAmtId).text().toFloat(),
             itemPrice = itemData.item_price.toFloat(),
             isAvailableStock = self.lookUpData[itemData.item_id].remaining_stock,
-            totalItems = (subTotal).toFixed(2),
-            itemCount = 0;
+            totalItems = (subTotal).toFixed(2);
             
             if(self.lookUpData[itemData.item_id].quantity === undefined)
                 Object.append(self.lookUpData[itemData.item_id], self.itemToPurchase);
             
             if(btnAction === 'ADD')
             {
-                if(isAvailableStock)
-                {
-                    totalItems = (itemPrice + subTotal).toFixed(2);
-                    self.lookUpData[itemData.item_id].remaining_stock--;
-                    self.lookUpData[itemData.item_id].quantity++;
-                }
-                else if(isAvailableStock === 0)
-                {
-                    alert('No more stocks.');
-                }
+                totalItems = (itemPrice + subTotal).toFixed(2);
+                //self.lookUpData[itemData.item_id].remaining_stock--;
+                self.lookUpData[itemData.item_id].quantity++;
             }
             else if(btnAction === 'MINUS')
             {
@@ -118,13 +103,13 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                     if(parseInt(totalItems) <= 0 )
                     {
                         totalItems = '0.00';
-                        $(self.minusButtonId).attr('disabled', true);
+                        //$(self.minusButtonId).attr('disabled', true);
                     }
                     
                     if(self.lookUpData[itemData.item_id].quantity > 0)
                         self.lookUpData[itemData.item_id].quantity--;
                     
-                    self.lookUpData[itemData.item_id].remaining_stock++;
+                    //self.lookUpData[itemData.item_id].remaining_stock++;
                 }
             }
             var itemToRender = [{
@@ -133,8 +118,13 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 "item_quantity" : self.lookUpData[itemData.item_id].quantity,
                 "item_price" : self.lookUpData[itemData.item_id].item_price
             }];
+            
+            /**DISPLAY the TOTAL AMOUNT */
             $(self.showTotalAmtId).html(totalItems);
             
+            /**Set the total amount on the MODAL part
+             * before the modal display then render the MODAL
+             */
             $("#totalAmtPurchase").html(totalItems);
             self.reviewRenderPurchased(itemToRender);
     };
@@ -142,10 +132,25 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     self.reviewRenderPurchased = function(data)
     {
         Array.each(data, function(val){
-            var contentHTML = '<td width="50" class="label-cell"><label>' + val.item_quantity + '</label></td>'
-                            + '<td width="350"><label>' + val.item_name + '</label></td>'
-                            + '<td width="50"><label>' + val.item_price + '</label></td>';
-            
+            var contentHTML = '<td style="width: 130px;">'
+                            +   '<div class="input-group" style="width: 125px;">'
+                            +       '<span class="input-group-btn">'
+                            +           '<button type="button" class="btn btn-danger btn-number">'
+                            +               '<span class="glyphicon glyphicon-minus"></span>'
+                            +           '</button>'
+                            +       '</span>'
+                            +       '<input disabled type="text" '
+                            +           'class="form-control input-number" '
+                            +           'value="'+val.item_quantity+'">'
+                            +       '<span class="input-group-btn">'
+                            +           '<button type="button" class="btn btn-success btn-number">'
+                            +               '<span class="glyphicon glyphicon-plus"></span>'
+                            +           '</button>'
+                            +       '</span>'
+                            +   '</div>'
+                            + '</td>'
+                            + '<td>'+val.item_name+'</td>'
+                            + '<td>'+val.item_price+'</td>';
             
             contentListElem = new Element('<tr />',
             {
@@ -262,24 +267,31 @@ var ShopItems =
     },
     
      initRenderItemList : function(response)
-    {   
+    {
+        $$('#item-data-list').set("html", "");
         Array.each(response.data, function(val, idx)
         {
             //TODO : update the img src once the images are ready
             var contentHTML = '<div class="panel panel-default text-center">'
-                            +'<div class="panel-heading">' 
-                            +'<span class="fa-stack fa-5x">'
-                            +   '<img src="../img/items/Onion-PNG.png" alt="Onion" style="height:130;width:155px;"></img>'
-                            + '</span>'
-                            + '</div>'
-                            + '<div class="panel-body">'
-                            +   '<h4 style="text-align:left;">'+ val.item_name+ '&nbsp;&nbsp; / &nbsp;&nbsp;' + '<small>'+ val.item_price + '</small>' + '</h4>'
-                            + '<p>'+ val.item_desc +'</p>'
-                            +   '<button style="margin-left:-69px;" id="btn-add-item_' + val.item_id + '" type="button"><img src="../img/btn/add.png" alt="Add item"></img></button>'
-                            +   '<button id="btn-minus-item_' + val.item_id + '" type="button" disabled><img src="../img/btn/minus.png" alt="Remove item"></img></button>'
-                            +   '&nbsp;&nbsp;&nbsp;&nbsp; <label>Qty: 130</label>'
-                            + '</div>'
-                            + '</div>'
+                            +   '<div class="panel-heading">' 
+                            +       '<span class="fa-stack fa-5x">'
+                            +           '<img src="../img/items/Onion-PNG.png" alt="Onion" '
+                            +               'style="height:130;width:155px;"></img>'
+                            +       '</span>'
+                            +   '</div>'
+                            +   '<div class="panel-body">'
+                            +       '<h4 style="text-align:left;">'+ val.item_name
+                            +           '&nbsp;&nbsp; / &nbsp;&nbsp; &#x20B1;' 
+                            +           '<small> '+ val.item_price + '</small>' + '</h4>'
+                            +       '<p>'+ val.item_desc +'</p>'
+                            +       '<button style="margin-left:-69px;" id="btn-add-item_' + val.item_id + '" type="button">'
+                            +           '<img src="../img/btn/add.png" alt="Add item"></img></button>'
+                            +       '<button id="btn-minus-item_' + val.item_id + '" type="button">'
+                            +           '<img src="../img/btn/minus.png" alt="Remove item"></img></button>'
+                            +           '&nbsp;&nbsp;&nbsp;&nbsp; '
+                            +           '<label>Quantity:</label><span id="item-quantity_'+ val.item_id +'"> 0</span>'
+                            +   '</div>'
+                            + '</div>';
                            
                            
             contentListElem = new Element('<div />',

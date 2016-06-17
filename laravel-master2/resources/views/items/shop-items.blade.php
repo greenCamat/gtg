@@ -2,34 +2,35 @@
 @section('title', 'GTG - Vegetables')
 @section('content')
 
-<div id="item-data-list" class="row">
-    <div class="col-lg-12">
-        <h2 class="page-header">
-            Shopping Section
-        </h2>
-        <div class="col-sm-3 col-md-3 pull-left">
-            <select id="item-category" class="form-control">
-               <!--render-->
-            </select>
-        </div>
-        <div class="col-sm-3 col-md-3 btn-group">
-            <span data-target="#myModal" data-toggle="modal" type="button" style="font-size: 16px;color: #333;" class="label btn btn-default">Review purchased</span>
-        </div>
-        <div class="col-sm-3 col-md-3 btn-group">
-            <span style="font-size: 16px;" class="label">Cart/Total Amount: &#x20B1;<label id="total-amt">0.00</label></span>  
-        </div>
-        
-        <div class="col-sm-3 col-md-3 pull-right">
-            <form class="navbar-form" role="search">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" />
-                    <div class="input-group-btn">
-                        <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="col-lg-12">
+    <h2 class="page-header">
+        Shopping Section
+    </h2>
+    <div class="col-sm-3 col-md-3 pull-left">
+        <select id="item-category" class="form-control">
+            <!--render-->
+        </select>
     </div>
+    <div class="col-sm-3 col-md-3 btn-group">
+        <span data-target="#myModal" data-toggle="modal" type="button" style="font-size: 16px;color: #333;" class="label btn btn-default">Review purchased</span>
+    </div>
+    <div class="col-sm-3 col-md-3 btn-group">
+        <span style="font-size: 16px;" class="label">Cart/Total Amount: &#x20B1; <label id="total-amt">0.00</label></span>  
+    </div>
+    
+    <div class="col-sm-3 col-md-3 pull-right">
+        <form class="navbar-form" role="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term" />
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="item-data-list" class="row">
+    <!--render items-->
 </div>
 
 <!--modal part-->
@@ -41,20 +42,20 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Grocery List</h4>
-         <div align="right"><span style="font-weight: bold;">Total Amount: &#x20B1; 20.75<span></div>
+         <div align="right">Total Amount: &#x20B1; <span id="totalAmtPurchase" style="font-weight: bold;">20.75<span></div>
       </div>
         <div class="modal-body">
             <div class="table-responsive">          
               <table class="table">
                 <thead>
                   <tr>
-                    <th>#</th>
-                    <th>Items purchased</th>
+                    <th>Quantity</th>
+                    <th>Items Name</th>
                     <th>Total</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody id="renderPurchased">
+                  <!--<tr>
                     <td style="width: 130px;">
                         <div class="input-group" style="width: 125px;">
                             <span class="input-group-btn">
@@ -72,7 +73,7 @@
                     </td>
                     <td>Petchay Baguio</td>
                     <td>20.75</td>
-                  </tr>
+                  </tr>-->
                 </tbody>
               </table>
             </div>
