@@ -36,8 +36,10 @@ class ItemsModel extends Model
                                     category = :category 
                                 AND status_flag = 1', ['category' => $Item_category]
                                 );
-        if(count($item_data[0]) && is_array($item_data))
-            return $item_data;
+        if($item_data){
+            if(count($item_data[0]) && is_array($item_data))
+                return $item_data;
+        }
         else
             return false;
     }

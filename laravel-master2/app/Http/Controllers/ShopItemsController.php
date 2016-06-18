@@ -86,6 +86,9 @@ class ShopItemsController extends Controller
                 $itemData = $temp;
                 return response()->json(array('data'=> $itemData, 'itemColumn'=>$itemColumn), 200);
             }
+            else {
+                return response()->json(array('data'=> '', 'itemColumn'=>$itemColumn, 'msg'=>'Item Not Available.'), 200);
+            }
         }
         else {
             return response()->json(array('data'=> '', 'itemColumn'=>''), 401);
