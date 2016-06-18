@@ -44,12 +44,15 @@
 	            <!-- Collect the nav links, forms, and other content for toggling -->
 	            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	                <ul class="nav navbar-nav navbar-right">
+	                	<li>
+	                        <a href="{{ url ('/') }}">Home</a>
+	                    </li>
 	                    <li>
 	                        <a href="{{ url ('shop') }}">Shop</a>
 	                    </li>
-	                    <li>
+	                    <!--<li>
 	                        <a href="services.html">Sale</a>
-	                    </li>
+	                    </li>-->
 	                    <li>
 	                        <a href="packages.html">Packages</a>
 	                    </li>
@@ -57,7 +60,7 @@
 	                        <a href="{{ url ('aboutus') }}">About Us</a>
 	                    </li>
 	                    <li>
-	                        <a href="contactus.html">Contact Us</a>
+	                        <a href="{{ url ('contactus') }}">Contact Us</a>
 	                    </li>
 	                    <!--<li class="dropdown">
 	                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>

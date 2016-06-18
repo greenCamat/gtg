@@ -21,6 +21,11 @@ Route::get('/aboutus', function(){
 	return View::make('pages.aboutus');
 });
 
+Route::get('/contactus', function(){
+
+	return View::make('pages.contactus');
+});
+
 Route::get('/submit-order', function(){
 
 	return View::make('pages.submit-order');

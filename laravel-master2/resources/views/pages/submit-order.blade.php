@@ -30,7 +30,7 @@
                      <div class="control-group form-group">
                         <div class="controls">
                             <label>Preferred delivery date:</label>
-                            <input data-provide="datepicker" type="date" class="form-control glyphicon glyphicon-calendar" id="pref_data" style="width: 200px;">
+                            <input disabled type="date" class="form-control glyphicon glyphicon-calendar" id="pref_data" style="width: 200px;">(For Member use Only.)
                         </div>
                     </div>
                     <div class="control-group form-group">
@@ -40,7 +40,7 @@
 							    <option>Select</option>
 							    <option>Personal delivery</option>
 							    <option>Delivery to someone else</option>
-							  </select>
+							  </select>(For Member use Only.)
                         </div>
                     </div>
                     <div class="control-group form-group">
