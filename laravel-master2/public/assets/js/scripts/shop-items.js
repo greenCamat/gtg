@@ -9,7 +9,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     self.addButtonId = 'button[id^=btn-add-item_]';
     self.minusButtonId = 'button[id^=btn-minus-item_]';
     self.showTotalAmtId = '#total-amt';
-    self.reviewPurchasedId = '#review-purchased';
+    self.reviewPurchasedId = '#myModal';
     self.itemToPurchase = {
         "quantity" : 0
     };
@@ -34,7 +34,10 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
             ** ENUM DATA: 'CANNED GOODS/INSTANT FOOD','CONDIMENTS','DAIRY','FRUITS','MEAT/FISH','RICE','VEGETABLES','CHIPS','BEVERAGES','TOILETRIES','SUPPLIES','OTHERS'
             ** make the ENUM DATA 
             **/
-            var categorySelected = this.get("value").toLowerCase().replace(/ /g,'');
+            var categorySelected = this.get("value").toLowerCase()
+                                    .replace(/ /g, '')
+                                    .replace(/\\/g, '')
+                                    .replace('/', '');
             
             ShopItems.initAjaxCall(categorySelected, [ShopItems.initRenderItemList]);
         });
@@ -67,15 +70,16 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
             }
             
-            $("#item-quantity_"+itemId).html(' '+itemQuantity);
-            
+            $("#item-quantity_"+itemId).html(' '+itemQuantity);      
         });
         
         $$(self.reviewPurchasedId).removeEvents();
         $$(self.reviewPurchasedId).addEvent('click', function()
         {
-            console.log("click");
-            //$$("#reviewList").addClass("modalDialog");
+            var totalAmt = $(self.showTotalAmtId).text().toInt();
+            
+            if(totalAmt === 0)
+                $$('#renderPurchased').set("html", "");
         });
     };
     
@@ -112,12 +116,6 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                     //self.lookUpData[itemData.item_id].remaining_stock++;
                 }
             }
-            var itemToRender = [{
-                "item_id" : self.lookUpData[itemData.item_id].item_id,
-                "item_name" : self.lookUpData[itemData.item_id].item_name,
-                "item_quantity" : self.lookUpData[itemData.item_id].quantity,
-                "item_price" : self.lookUpData[itemData.item_id].item_price
-            }];
             
             /**DISPLAY the TOTAL AMOUNT */
             $(self.showTotalAmtId).html(totalItems);
@@ -126,63 +124,58 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
              * before the modal display then render the MODAL
              */
             $("#totalAmtPurchase").html(totalItems);
-            self.reviewRenderPurchased(itemToRender);
+            
+            if(totalItems) {
+                var itemToRender = [{
+                    "item_id" : self.lookUpData[itemData.item_id].item_id,
+                    "item_name" : self.lookUpData[itemData.item_id].item_name,
+                    "item_quantity" : self.lookUpData[itemData.item_id].quantity,
+                    "item_price" : self.lookUpData[itemData.item_id].item_price
+                }];
+                self.reviewRenderPurchased(itemToRender);
+            }
     };
     
     self.reviewRenderPurchased = function(data)
     {
-        Array.each(data, function(val){
-            var contentHTML = '<td style="width: 130px;">'
-                            +   '<div class="input-group" style="width: 125px;">'
-                            +       '<span class="input-group-btn">'
-                            +           '<button type="button" class="btn btn-danger btn-number">'
-                            +               '<span class="glyphicon glyphicon-minus"></span>'
-                            +           '</button>'
-                            +       '</span>'
-                            +       '<input disabled type="text" '
-                            +           'class="form-control input-number" '
-                            +           'value="'+val.item_quantity+'">'
-                            +       '<span class="input-group-btn">'
-                            +           '<button type="button" class="btn btn-success btn-number">'
-                            +               '<span class="glyphicon glyphicon-plus"></span>'
-                            +           '</button>'
-                            +       '</span>'
-                            +   '</div>'
-                            + '</td>'
-                            + '<td>'+val.item_name+'</td>'
-                            + '<td>'+val.item_price+'</td>';
-            
-            contentListElem = new Element('<tr />',
-            {
-                'id' : 'purchased_' + val.item_id,
-                'class' : 'purchased-item',
-                'html' : contentHTML
+        if(Object.getLength(data)){
+            Array.each(data, function(val){
+                var contentHTML = '<td style="width: 130px;">'
+                                +   '<div class="input-group" style="width: 125px;">'
+                                +       '<span class="input-group-btn">'
+                                +           '<button type="button" class="btn btn-danger btn-number">'
+                                +               '<span class="glyphicon glyphicon-minus"></span>'
+                                +           '</button>'
+                                +       '</span>'
+                                +       '<input disabled type="text" '
+                                +           'class="form-control input-number" '
+                                +           'value="'+val.item_quantity+'">'
+                                +       '<span class="input-group-btn">'
+                                +           '<button type="button" class="btn btn-success btn-number">'
+                                +               '<span class="glyphicon glyphicon-plus"></span>'
+                                +           '</button>'
+                                +       '</span>'
+                                +   '</div>'
+                                + '</td>'
+                                + '<td>'+val.item_name+'</td>'
+                                + '<td>'+val.item_price+'</td>';
+                
+                contentListElem = new Element('<tr />',
+                {
+                    'id' : 'purchased_' + val.item_id,
+                    'class' : 'purchased-item',
+                    'html' : contentHTML
+                });
+                $$('#purchased_' +val.item_id).dispose();
+                $$('#renderPurchased').grab(contentListElem);
             });
-            $$('#purchased_' +val.item_id).dispose();
-            $$('#renderPurchased').grab(contentListElem);
-        });
+        }
     };
 };
 
 var ShopItems =
 {
     selectedItemObj : null,
-    
-    //make a UTIL or CONFIG for this part
-    categoryItemObj : {
-        'vegetables'    : 'getVegetablesItem',
-        'fruits'    : 'getFruitsitem',
-        'meatfish'  : 'getMeatfishitem',
-        'condiments' : 'getCondimentsitem',
-        'dairy'         : 'getDairyitem',
-        'chipsnacks'    : 'getChipnsnacksitem',
-        'instantfood'   : 'getInstantfooditem',
-        'rice'  : 'getRiceitem',
-        'supplies' : 'getSuppliesitem',
-        'beverages' : 'getBeveragesitem',
-        'toiletries' : 'getToiletriesitem',
-        'otherservices' : 'getOtherservicesitem'
-    },
     responseItemData : [],
     
     init : function()
@@ -190,7 +183,6 @@ var ShopItems =
         var itemSelected = location.pathname.split('/')[2].toLowerCase();
         
         ShopItems.initAjaxCall(itemSelected,[ShopItems.initRenderItemList]);
-        console.log("Init ShopItems");
     },
     
     initAjaxCall : function(itemSelected, callbacks)
@@ -198,63 +190,76 @@ var ShopItems =
         var self = this;
         
         var lookUpData = [],
-            URL = location.origin,
-            categoryObjKeys = Object.keys(ShopItems.categoryItemObj);
+            URL = location.origin;
         
-        if(Object.contains(categoryObjKeys, itemSelected))
+        if(itemSelected === 'cannedgoodsinstantfood')
+            itemSelected = 'instantfood';
+        
+        /**Clear the drop down select category */
+        $$('#item-category').set("html", "");
+        
+        
+        /**NOTE:
+         * What if the customer click the ctrl+F5 or clear cached
+         * or refresh? all the details or items were back to Zero.
+         * We need to store it on the localStorage or cahed it.
+         */
+        
+        if (!self._request || !self._request.isRunning())
         {
-            if (!self._request || !self._request.isRunning())
+            self._request = new Request.JSON(
             {
-                /**
-                ** NOTE: use a middleware to return the JSON DATA
-                ** then the CONTROLLER will still be the one to display the VIEW.
-                **/
-                self._request = new Request.JSON(
+                'url' : URL + '/shop/selectedCategory/'+itemSelected,
+                'method' : 'GET',
+                'data' : '',
+                'onSuccess' : function(response)
                 {
-                    'url' : URL + '/shop/selectedCategory/'+itemSelected,//+'/' + ShopItems.categoryItemObj[itemSelected],
-                    'method' : 'GET',
-                    'data' : '',
-                    'onSuccess' : function(response)
+                    if(Object.getLength(response))
                     {
-                        if(Object.getLength(response))
+                        ShopItems.responseItemData = response;
+                        Array.each(response.data, function(val)
                         {
-                            ShopItems.responseItemData = response;
-                            Array.each(response.data, function(val)
-                            {
-                                lookUpData[val.item_id] = val;
-                            });
-                            
-                            //render the itemColumn
-                            Object.each(response.itemColumn, function(val)  
-                            {
-                                var itemColumnElem = new Element('<option />',
-                                {
-                                   'value' : val,
-                                   'text' : val,
-                                   'selected' : (itemSelected ? true : false)
-                                });
-                                $$('#item-category').grab(itemColumnElem);
-                            });
-                            
-                            //render the content item list
-                            if(callbacks)
-                            {
-                                Array.each(callbacks, function(callback)
-                                {
-                                    callback(response);
-                                });
-                            }
-                            
-                            self.initSelectedItem(response, lookUpData, itemSelected);
+                            lookUpData[val.item_id] = val;
+                        });
+                        
+                        if(itemSelected === 'cannedgoodsinstantfood' 
+                            || itemSelected === 'instantfood') {
+                            itemSelected = 'CANNED GOODS/INSTANT FOOD';
                         }
-                    },
-                    'onError' : function()
-                    {
-                        console.log('Something went wrong...');
-                        self._request.stop;
+                        else if(itemSelected === 'meatfish') {
+                            itemSelected = 'MEAT/FISH';
+                        }
+                        
+                        //render the itemColumn
+                        Object.each(response.itemColumn, function(val)  
+                        {
+                            var itemColumnElem = new Element('<option />',
+                            {
+                                'value' : val,
+                                'text' : val,
+                                'selected' : (itemSelected ? true : false)
+                            });
+                            $$('#item-category').grab(itemColumnElem);
+                        });
+                        
+                        //render the content item list
+                        if(callbacks)
+                        {
+                            Array.each(callbacks, function(callback)
+                            {
+                                callback(response);
+                            });
+                        }
+                        
+                        self.initSelectedItem(response, lookUpData, itemSelected);
                     }
-                }).send();
-            }
+                },
+                'onError' : function()
+                {
+                    console.log('Something went wrong...');
+                    self._request.stop;
+                }
+            }).send();
         }
     },
     

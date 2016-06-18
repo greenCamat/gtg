@@ -14,6 +14,11 @@ class ItemsModel extends Model
         $enum = array();
         foreach( explode(',', $matches[1]) as $value )
         {
+            /**
+            * Use this to trim all the slashes, whitespaces
+            * and single quote
+            * str_replace(array("/", "\\", "'", " "), '', $value);
+            **/
             $v = trim( $value, "'" );
             $enum = array_add($enum, $v, $v);
         }

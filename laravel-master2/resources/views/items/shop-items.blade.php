@@ -42,7 +42,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
         <h4 class="modal-title">Grocery List</h4>
-         <div align="right">Total Amount: &#x20B1; <span id="totalAmtPurchase" style="font-weight: bold;">20.75<span></div>
+         <div align="right">Total Amount: &#x20B1; <span id="totalAmtPurchase" style="font-weight: bold;">0.00<span></div>
       </div>
         <div class="modal-body">
             <div class="table-responsive">          

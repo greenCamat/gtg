@@ -56,23 +56,15 @@ class ShopItemsController extends Controller
         $itemData = [];
         $temp = array();
         $pageView = 'items.shop-items';
-        $food_category_arr = array(
-            "VEGETABLES",
-            "FRUITS",
-            "MEATFISH",
-            "CONDIMENTS",
-            "DAIRY",
-            "CHIPSNACKS",
-            "INSTANTFOOD",
-            "RICE",
-            "SUPPLIES",
-            "BEVERAGES",
-            "TOILETRIES",
-            "OTHERSERVICES"
-        );
         $item = strtoupper($item);
         
-        if(in_array($item, $food_category_arr))
+        if($item === 'INSTANTFOOD') {
+            $item = "CANNED GOODS/INSTANT FOOD";
+        } else if ($item === 'MEATFISH') {
+            $item = "MEAT/FISH";
+        }
+        
+        if(in_array($item, $itemColumn))
         {
             $itemData = $ItemsModel->getItem($item);
             if(count($itemData[0]) && is_array($itemData))
@@ -94,6 +86,9 @@ class ShopItemsController extends Controller
                 $itemData = $temp;
                 return response()->json(array('data'=> $itemData, 'itemColumn'=>$itemColumn), 200);
             }
+        }
+        else {
+            return response()->json(array('data'=> '', 'itemColumn'=>''), 401);
         }
     }
     /**
