@@ -6,7 +6,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">Contact Us</h1>
                 <ol class="breadcrumb">
-                    <li><a href="index.html">Home</a>
+                    <li><a href="{{ url ('/') }}">Home</a>
                     </li>
                     <li class="active">Contact</li>
                 </ol>
@@ -84,7 +84,7 @@
                         </div>
                     </div>
                     <div id="success"></div>
-                    <!-- For success/fail messages -->
+                    <!-- For sending order to admin -->
                     <button type="submit" class="btn btn-success">Send Message</button>
                 </form>
             </div>
