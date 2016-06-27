@@ -65,6 +65,7 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
                 
             if(itemQuantity <= 0) {
                 itemQuantity = 0;
+                $$('#renderPurchased').set("html", "");
             } else {
                 itemQuantity--;
                 self.computeTotalAmount(self.lookUpData[itemId], 'MINUS');
@@ -138,38 +139,42 @@ var SelectedItem = function(response, lookUpData, selectedCategory)
     
     self.reviewRenderPurchased = function(data)
     {
-        if(Object.getLength(data)){
-            Array.each(data, function(val){
-                var contentHTML = '<td style="width: 130px;">'
-                                +   '<div class="input-group" style="width: 125px;">'
-                                +       '<span class="input-group-btn">'
-                                +           '<button type="button" class="btn btn-danger btn-number">'
-                                +               '<span class="glyphicon glyphicon-minus"></span>'
-                                +           '</button>'
-                                +       '</span>'
-                                +       '<input disabled type="text" '
-                                +           'class="form-control input-number" '
-                                +           'value="'+val.item_quantity+'">'
-                                +       '<span class="input-group-btn">'
-                                +           '<button type="button" class="btn btn-success btn-number">'
-                                +               '<span class="glyphicon glyphicon-plus"></span>'
-                                +           '</button>'
-                                +       '</span>'
-                                +   '</div>'
-                                + '</td>'
-                                + '<td>'+val.item_name+'</td>'
-                                + '<td>'+val.item_price+'</td>';
-                
-                contentListElem = new Element('<tr />',
-                {
-                    'id' : 'purchased_' + val.item_id,
-                    'class' : 'purchased-item',
-                    'html' : contentHTML
-                });
-                $$('#purchased_' +val.item_id).dispose();
-                $$('#renderPurchased').grab(contentListElem);
+        if(Object.getLength(data)) {
+            Array.each(data, function(val) {
+                if(val.item_quantity > 0) {
+                    var contentHTML = '<td style="width: 130px;">'
+                                    +   '<div class="input-group" style="width: 125px;">'
+                                    +       '<span class="input-group-btn">'
+                                    +           '<button type="button" id="btn-minus-item_' + val.item_id
+                                    +               '" class="btn btn-danger btn-number">'
+                                    +               '<span class="glyphicon glyphicon-minus"></span>'
+                                    +           '</button>'
+                                    +       '</span>'
+                                    +       '<input disabled type="text" '
+                                    +           'class="form-control input-number" '
+                                    +           'value="'+val.item_quantity+'">'
+                                    +       '<span class="input-group-btn">'
+                                    +           '<button type="button" id="btn-add-item_' + val.item_id
+                                    +               '" class="btn btn-success btn-number">'
+                                    +               '<span class="glyphicon glyphicon-plus"></span>'
+                                    +           '</button>'
+                                    +       '</span>'
+                                    +   '</div>'
+                                    + '</td>'
+                                    + '<td>'+val.item_name+'</td>'
+                                    + '<td>'+val.item_price+'</td>';
+                    
+                    contentListElem = new Element('<tr />',
+                    {
+                        'id' : 'purchased_' + val.item_id,
+                        'class' : 'purchased-item',
+                        'html' : contentHTML
+                    });
+                    $$('#purchased_' +val.item_id).dispose();
+                    $$('#renderPurchased').grab(contentListElem);
             });
         }
+        self.addEvents();
     };
 };
 
